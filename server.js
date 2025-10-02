@@ -625,13 +625,29 @@ app.delete('/api/coupons/:codigo', async (req, res) => {
     }
 });
 
-// Ruta catch-all para servir páginas HTML (para Vercel)
+// Rutas específicas para páginas principales
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+app.get('/admin', (req, res) => {
+    res.sendFile(path.join(__dirname, 'admin.html'));
+});
+
+app.get('/producto', (req, res) => {
+    res.sendFile(path.join(__dirname, 'producto.html'));
+});
+
+app.get('/carrito', (req, res) => {
+    res.sendFile(path.join(__dirname, 'carrito.html'));
+});
+
+app.get('/checkout', (req, res) => {
+    res.sendFile(path.join(__dirname, 'checkout.html'));
+});
+
+// Ruta catch-all para servir páginas HTML
 app.get('*', (req, res) => {
-    // Si es la raíz, servir index.html
-    if (req.path === '/') {
-        return res.sendFile(path.join(__dirname, 'index.html'));
-    }
-    
     // Si es una ruta HTML específica, servirla
     const htmlFile = req.path.endsWith('.html') ? req.path : req.path + '.html';
     const fullPath = path.join(__dirname, htmlFile);
