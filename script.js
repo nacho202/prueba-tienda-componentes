@@ -442,7 +442,7 @@ function cargarProductosDestacados() {
         };
 
     featuredGrid.innerHTML = productosAMostrar.map(producto => `
-        <div class="featured-card" onclick="window.location.href='producto.html?id=${producto.id}'">
+        <div class="featured-card" onclick="window.location.href='/producto?id=${producto.id}'">
             <div class="featured-badge">Destacado</div>
             <div class="featured-image">
                 ${producto.coverImage 
@@ -462,7 +462,7 @@ function cargarProductosDestacados() {
                     <button class="btn btn-primary" onclick="event.stopPropagation(); agregarAlCarritoDesdeCard(${producto.id})">
                         <i class="fas fa-cart-plus"></i> Agregar
                     </button>
-                    <button class="btn btn-outline" onclick="event.stopPropagation(); window.location.href='producto.html?id=${producto.id}'">
+                    <button class="btn btn-outline" onclick="event.stopPropagation(); window.location.href='/producto?id=${producto.id}'">
                         <i class="fas fa-info-circle"></i> Ver más
                     </button>
                 </div>
@@ -504,7 +504,7 @@ function mostrarProductos(productos) {
                     <button class="btn btn-primary" onclick="event.stopPropagation(); agregarAlCarritoDesdeCard(${producto.id})" ${sinStock ? 'disabled' : ''}>
                         <i class="fas fa-cart-plus"></i> ${sinStock ? 'No Disponible' : 'Agregar'}
                     </button>
-                    <button class="btn btn-outline" onclick="event.stopPropagation(); window.location.href='producto.html?id=${producto.id}'">
+                    <button class="btn btn-outline" onclick="event.stopPropagation(); window.location.href='/producto?id=${producto.id}'">
                         <i class="fas fa-info-circle"></i> Ver más
                     </button>
                 </div>
@@ -596,7 +596,7 @@ function limpiarFiltros() {
 // Abrir modal de producto
 function abrirModal(productoId) {
     // Redirigir a la página de detalles del producto
-    window.location.href = `producto.html?id=${productoId}`;
+    window.location.href = `/producto?id=${productoId}`;
 }
 
 // Cerrar modal

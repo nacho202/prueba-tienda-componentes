@@ -94,7 +94,7 @@ function inicializarCarrito() {
     
     // Si no hay productos en el carrito, redirigir al carrito
     if (carrito.length === 0) {
-        window.location.href = 'carrito.html';
+        window.location.href = '/carrito';
     }
 }
 
@@ -238,7 +238,7 @@ function inicializarEventListeners() {
         // Vaciar el carrito y redirigir a inicio (mismo comportamiento que "Continuar Comprando")
         localStorage.removeItem('carrito');
         localStorage.removeItem('cuponAplicado');
-        window.location.href = 'index.html';
+        window.location.href = '/';
     });
     
     // Botón de descargar comprobante
@@ -253,7 +253,7 @@ function inicializarEventListeners() {
             // Vaciar el carrito y redirigir a inicio (mismo comportamiento que "Continuar Comprando")
             localStorage.removeItem('carrito');
             localStorage.removeItem('cuponAplicado');
-            window.location.href = 'index.html';
+            window.location.href = '/';
         }
     });
 }

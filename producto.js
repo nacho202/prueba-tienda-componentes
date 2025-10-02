@@ -353,14 +353,14 @@ function mostrarProductosRelacionados(producto) {
         }
         
         return `
-            <div class="related-card" onclick="window.location.href='producto.html?id=${relacionado.id}'">
+            <div class="related-card" onclick="window.location.href='/producto?id=${relacionado.id}'">
                 <div class="related-card-image">
                     ${imagenHTML}
                 </div>
                 <div class="related-card-info">
                     <h3>${relacionado.nombre}</h3>
                     <div class="price">$${relacionado.precio}</div>
-                    <button class="btn btn-outline btn-sm" onclick="event.stopPropagation(); window.location.href='producto.html?id=${relacionado.id}'">
+                    <button class="btn btn-outline btn-sm" onclick="event.stopPropagation(); window.location.href='/producto?id=${relacionado.id}'">
                         <i class="fas fa-info-circle"></i> Ver más
                     </button>
                 </div>
@@ -495,7 +495,7 @@ function inicializarEventListeners() {
         
         // Redirigir al carrito
         setTimeout(() => {
-            window.location.href = 'carrito.html';
+            window.location.href = '/carrito';
         }, 500);
     });
 }

@@ -384,7 +384,7 @@ function mostrarProductosRelacionados(productos) {
     const crearTarjeta = (producto) => {
         const productCard = document.createElement('div');
         productCard.className = 'cart-suggestion-card';
-        productCard.onclick = () => window.location.href = `producto.html?id=${producto.id}`;
+        productCard.onclick = () => window.location.href = `/producto?id=${producto.id}`;
         
         // Determinar si mostrar imagen o ícono
         let imagenHTML;
@@ -666,7 +666,7 @@ function mostrarCheckout() {
     }
     
     // Redirigir a la página de checkout
-    window.location.href = 'checkout.html';
+    window.location.href = '/checkout';
 }
 
 // Cerrar modal de checkout
