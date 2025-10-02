@@ -625,21 +625,36 @@ app.delete('/api/coupons/:codigo', async (req, res) => {
     }
 });
 
-// Ruta catch-all para servir archivos HTML (para Vercel)
+// Ruta catch-all para servir archivos estáticos y HTML (para Vercel)
 app.get('*', (req, res) => {
     const filePath = path.join(__dirname, req.path);
     const ext = path.extname(filePath);
     
-    // Si es un archivo estático (js, css, imágenes, etc.), servirlo
-    if (ext && ext !== '.html') {
-        return res.sendFile(filePath);
+    // Si es un archivo estático (js, css, imágenes, etc.), servirlo directamente
+    if (ext && ['.js', '.css', '.png', '.jpg', '.jpeg', '.gif', '.webp', '.ico', '.svg', '.woff', '.woff2', '.ttf', '.eot', '.json'].includes(ext)) {
+        return res.sendFile(filePath, (err) => {
+            if (err) {
+                console.log('Error serving static file:', filePath);
+                res.status(404).send('File not found');
+            }
+        });
     }
     
-    // Si no tiene extensión o es HTML, servir index.html por defecto
-    if (!ext || ext === '.html') {
-        const htmlFile = req.path === '/' ? 'index.html' : req.path;
+    // Si es la raíz, servir index.html
+    if (req.path === '/') {
+        return res.sendFile(path.join(__dirname, 'index.html'));
+    }
+    
+    // Si es una ruta HTML específica, servirla
+    if (ext === '.html' || !ext) {
+        const htmlFile = req.path.endsWith('.html') ? req.path : req.path + '.html';
         const fullPath = path.join(__dirname, htmlFile);
-        return res.sendFile(fullPath);
+        return res.sendFile(fullPath, (err) => {
+            if (err) {
+                console.log('Error serving HTML:', fullPath);
+                res.status(404).send('Page not found');
+            }
+        });
     }
     
     // Fallback a index.html
