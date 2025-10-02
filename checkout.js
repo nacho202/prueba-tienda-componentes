@@ -128,7 +128,10 @@ function mostrarResumenPedido() {
     orderItems.innerHTML = carrito.map(item => `
         <div class="order-item">
             <div class="item-image">
-                <i class="${item.imagen}"></i>
+                ${item.coverImage 
+                    ? `<img src="${item.coverImage}" alt="${item.nombre}">` 
+                    : `<i class="${item.imagen || 'fas fa-box'}"></i>`
+                }
             </div>
             <div class="item-details">
                 <h4>${item.nombre}</h4>

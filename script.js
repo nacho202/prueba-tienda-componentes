@@ -633,6 +633,7 @@ function agregarAlCarritoDesdeCard(productoId) {
             cantidad: 1,
             stock: producto.stock,
             imagen: producto.imagen,
+            coverImage: producto.coverImage,
             categoria: producto.categoria,
             marca: producto.marca
         });

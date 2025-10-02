@@ -451,6 +451,7 @@ function inicializarEventListeners() {
             cantidad: cantidad,
             stock: productoActual.stock,
             imagen: productoActual.imagen,
+            coverImage: productoActual.coverImage,
             categoria: productoActual.categoria,
             marca: productoActual.marca
         });
