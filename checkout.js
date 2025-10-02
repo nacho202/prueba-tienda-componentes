@@ -354,7 +354,7 @@ function procesarPago(e) {
     // Simular procesamiento de pago
     mostrarNotificacion('Procesando pago...', 'info');
     
-    setTimeout(() => {
+    setTimeout(async () => {
         // Simular éxito del pago
         mostrarNotificacion('¡Pago procesado exitosamente!', 'success');
         
