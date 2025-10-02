@@ -6,8 +6,8 @@ let cupones = [];
 let isAuthenticated = false;
 let currentUser = null;
 
-// URL base de la API
-const API_URL = 'http://localhost:3000/api';
+// URL base de la API - ahora se define en config.js
+// const API_URL = 'http://localhost:3000/api';
 
 // Verificar conexión con el servidor
 async function verificarConexionServidor() {

@@ -1,5 +1,5 @@
 // Variables globales
-const API_URL = 'http://localhost:3000/api';
+// const API_URL = 'http://localhost:3000/api'; // Ahora se define en config.js
 let productId = null;
 let categorias = [];
 let coverImageFile = null;

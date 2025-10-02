@@ -4,8 +4,8 @@ let productosFiltrados = [];
 let carrito = [];
 let categorias = [];
 
-// URL de la API
-const API_URL = 'http://localhost:3000/api';
+// URL de la API - ahora se define en config.js
+// const API_URL = 'http://localhost:3000/api';
 
 // ========== SISTEMA DE TRACKING UTM ==========
 

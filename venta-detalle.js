@@ -1,5 +1,5 @@
-// API URL
-const API_URL = 'http://localhost:3000/api';
+// API URL - ahora se define en config.js
+// const API_URL = 'http://localhost:3000/api';
 
 // Variables globales
 let venta = null;
