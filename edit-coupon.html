@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Cupón - TechStore Admin</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="admin-header">
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-store"></i>
+                <span>TechStore Admin</span>
+            </div>
+            <nav class="admin-nav">
+                <a href="admin.html" class="nav-link">
+                    <i class="fas fa-arrow-left"></i> Volver al Panel
+                </a>
+                <button onclick="handleLogout()" class="btn btn-outline">
+                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="edit-product-container">
+        <div class="edit-product-header">
+            <h1 id="pageTitle">
+                <i class="fas fa-ticket-alt"></i> <span id="titleText">Editar Cupón</span>
+            </h1>
+        </div>
+
+        <!-- Formulario de Edición -->
+        <div class="edit-product-form">
+            <form id="editCouponForm">
+                <input type="hidden" id="couponOriginalCode">
+
+                <div class="form-grid">
+                    <!-- Columna Izquierda -->
+                    <div class="form-column">
+                        <div class="form-group">
+                            <label for="couponCode">
+                                <i class="fas fa-barcode"></i> Código del Cupón *
+                            </label>
+                            <input 
+                                type="text" 
+                                id="couponCode" 
+                                required 
+                                placeholder="PROMO20"
+                                style="text-transform: uppercase; font-family: monospace; font-weight: bold;">
+                            <small>El código debe ser único y sin espacios</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="couponDiscount">
+                                <i class="fas fa-percent"></i> Descuento (%) *
+                            </label>
+                            <input type="number" id="couponDiscount" min="1" max="100" required placeholder="20">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="couponExpiration">
+                                <i class="fas fa-calendar-alt"></i> Fecha de Expiración *
+                            </label>
+                            <input type="date" id="couponExpiration" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="couponMaxUse">
+                                    <i class="fas fa-hashtag"></i> Uso Máximo
+                                </label>
+                                <input type="number" id="couponMaxUse" min="1" value="100">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="couponCurrentUse">
+                                    <i class="fas fa-chart-line"></i> Uso Actual
+                                </label>
+                                <input type="number" id="couponCurrentUse" min="0" value="0" readonly style="background: #f3f4f6;">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="couponActive" checked>
+                                <span><i class="fas fa-check-circle"></i> Cupón Activo</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Columna Derecha -->
+                    <div class="form-column">
+                        <div class="form-group">
+                            <label for="couponDescription">
+                                <i class="fas fa-align-left"></i> Descripción
+                            </label>
+                            <textarea 
+                                id="couponDescription" 
+                                rows="5" 
+                                placeholder="Descripción del cupón (ej: Descuento del 20% en tu compra)"></textarea>
+                        </div>
+
+                        <!-- Vista Previa del Cupón -->
+                        <div class="product-preview">
+                            <h3><i class="fas fa-eye"></i> Vista Previa del Cupón</h3>
+                            <div class="coupon-preview-card">
+                                <div class="coupon-header">
+                                    <div class="coupon-icon">
+                                        <i class="fas fa-ticket-alt"></i>
+                                    </div>
+                                    <div class="coupon-discount">
+                                        <span class="discount-value" id="previewDiscount">20</span>
+                                        <span class="discount-symbol">%</span>
+                                    </div>
+                                </div>
+                                <div class="coupon-body">
+                                    <div class="coupon-code">
+                                        <span id="previewCode">PROMO20</span>
+                                    </div>
+                                    <p class="coupon-description" id="previewDescription">Descripción del cupón</p>
+                                    <div class="coupon-info">
+                                        <div class="info-item">
+                                            <i class="fas fa-calendar-alt"></i>
+                                            <span>Válido hasta: <strong id="previewExpiration">-</strong></span>
+                                        </div>
+                                        <div class="info-item">
+                                            <i class="fas fa-users"></i>
+                                            <span>Usos: <strong><span id="previewUseCurrent">0</span>/<span id="previewUseMax">100</span></strong></span>
+                                        </div>
+                                        <div class="info-item">
+                                            <i class="fas fa-check-circle"></i>
+                                            <span id="previewStatus">Activo</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Acciones -->
+                <div class="form-actions">
+                    <button type="button" onclick="window.location.href='admin.html'" class="btn btn-outline">
+                        <i class="fas fa-times"></i> Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Guardar Cupón
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Notificaciones -->
+    <div id="notifications"></div>
+
+    <script src="edit-coupon.js"></script>
+</body>
+</html>
+

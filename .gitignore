@@ -1,0 +1,26 @@
+# Dependencias
+node_modules/
+
+# Archivos de datos sensibles
+admin_credentials.json
+
+# Imágenes subidas por usuarios (NO ignorar en producción)
+# uploads/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Vercel
+.vercel
+

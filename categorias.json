@@ -1,0 +1,46 @@
+{
+  "categorias": [
+    {
+      "id": 1,
+      "nombre": "Procesadores",
+      "slug": "procesadores",
+      "icon": "fa-microchip",
+      "descripcion": "CPUs de última generación"
+    },
+    {
+      "id": 2,
+      "nombre": "Gabinetes",
+      "slug": "gabinetes",
+      "icon": "fa-server",
+      "descripcion": "Cases y torres para PC"
+    },
+    {
+      "id": 3,
+      "nombre": "Placas de Video",
+      "slug": "placas-video",
+      "icon": "fa-desktop",
+      "descripcion": "GPUs para gaming y trabajo"
+    },
+    {
+      "id": 4,
+      "nombre": "Memorias RAM",
+      "slug": "memorias-ram",
+      "icon": "fa-memory",
+      "descripcion": "Módulos de memoria"
+    },
+    {
+      "nombre": "Motherboard",
+      "slug": "motherboard",
+      "icon": "fa-microchip",
+      "descripcion": "Placa Madre",
+      "id": 5
+    },
+    {
+      "nombre": "Discos y Almacenamiento",
+      "slug": "discos",
+      "icon": "fa-hdd",
+      "descripcion": "HDDs, SSDs y unidades M.2",
+      "id": 6
+    }
+  ]
+}

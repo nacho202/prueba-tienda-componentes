@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore - Componentes de Computadora</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-microchip"></i>
+                <h1>TechStore</h1>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+                    <li><a href="#productos" class="nav-link">Productos</a></li>
+                    <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="header-right">
+                <div class="cart-icon" onclick="window.location.href='carrito.html'">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                </div>
+                <button class="hamburger-btn" id="hamburgerBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Menú móvil -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+            <li><a href="#productos" class="nav-link">Productos</a></li>
+            <li><a href="#contacto" class="nav-link">Contacto</a></li>
+            <li><a href="carrito.html" class="nav-link">Carrito</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Inicio Section -->
+        <section id="inicio" class="section active">
+            <div class="hero">
+                <div class="hero-content">
+                    <h2>Los Mejores Componentes para tu PC</h2>
+                    <p>Encuentra procesadores, tarjetas gráficas, memorias RAM y gabinetes de las mejores marcas</p>
+                    <a href="#productos" class="btn btn-primary nav-link">Ver Productos</a>
+                </div>
+                <div class="hero-image">
+                    <i class="fas fa-desktop"></i>
+                </div>
+            </div>
+            
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-shipping-fast"></i>
+                    <h3>Envío Rápido</h3>
+                    <p>Recibe tus componentes en 24-48 horas</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Garantía</h3>
+                    <p>Todos nuestros productos tienen garantía oficial</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-headset"></i>
+                    <h3>Soporte</h3>
+                    <p>Asesoramiento técnico especializado</p>
+                </div>
+            </div>
+
+            <!-- Productos Destacados -->
+            <div class="featured-products">
+                <div class="container">
+                    <h2>Productos Destacados</h2>
+                    <p class="featured-subtitle">Los componentes más populares y mejor valorados por nuestros clientes</p>
+                    <div class="featured-grid" id="featuredGrid">
+                        <!-- Los productos destacados se cargarán dinámicamente aquí -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Productos Section -->
+        <section id="productos" class="section products-section">
+            <div class="container">
+                <div class="products-layout">
+                    <!-- Sidebar con filtros -->
+                    <aside class="sidebar">
+                        <div class="filter-section">
+                            <h3>Filtrar por Categoría</h3>
+                            <div class="category-filters">
+                                <label class="filter-item">
+                                    <input type="checkbox" value="procesadores" checked>
+                                    <span>Procesadores</span>
+                                </label>
+                                <label class="filter-item">
+                                    <input type="checkbox" value="gabinetes" checked>
+                                    <span>Gabinetes</span>
+                                </label>
+                                <label class="filter-item">
+                                    <input type="checkbox" value="placas-video" checked>
+                                    <span>Placas de Video</span>
+                                </label>
+                                <label class="filter-item">
+                                    <input type="checkbox" value="memorias-ram" checked>
+                                    <span>Memorias RAM</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="filter-section">
+                            <h3>Filtrar por Precio</h3>
+                            <div class="price-filter">
+                                <input type="range" id="priceRange" min="0" max="2000" value="2000">
+                                <div class="price-display">
+                                    <span>Hasta: $<span id="maxPrice">2000</span></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="filter-section">
+                            <h3>Buscar</h3>
+                            <input type="text" id="searchInput" placeholder="Buscar productos...">
+                        </div>
+
+                        <button class="btn btn-secondary" id="clearFilters">Limpiar Filtros</button>
+                    </aside>
+
+                    <!-- Contenido principal de productos -->
+                    <div class="products-content">
+                        <div class="products-header">
+                            <h2>Nuestros Productos</h2>
+                            <div class="header-controls">
+                                <button class="filters-toggle-btn" id="filtersToggleBtn">
+                                    <i class="fas fa-filter"></i>
+                                    Filtros
+                                </button>
+                                <div class="sort-options">
+                                    <select id="sortSelect">
+                                        <option value="default">Ordenar por</option>
+                                        <option value="price-low">Precio: Menor a Mayor</option>
+                                        <option value="price-high">Precio: Mayor a Menor</option>
+                                        <option value="name">Nombre A-Z</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Panel de filtros móvil -->
+                        <div class="mobile-filters-panel" id="mobileFiltersPanel">
+                            <div class="filter-section">
+                                <h3>Filtrar por Categoría</h3>
+                                <div class="category-filters">
+                                    <label class="filter-item">
+                                        <input type="checkbox" value="procesadores" checked>
+                                        <span>Procesadores</span>
+                                    </label>
+                                    <label class="filter-item">
+                                        <input type="checkbox" value="gabinetes" checked>
+                                        <span>Gabinetes</span>
+                                    </label>
+                                    <label class="filter-item">
+                                        <input type="checkbox" value="placas-video" checked>
+                                        <span>Placas de Video</span>
+                                    </label>
+                                    <label class="filter-item">
+                                        <input type="checkbox" value="memorias-ram" checked>
+                                        <span>Memorias RAM</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="filter-section">
+                                <h3>Filtrar por Precio</h3>
+                                <div class="price-filter">
+                                    <input type="range" id="priceRangeMobile" min="0" max="2000" value="2000">
+                                    <div class="price-display">
+                                        <span>Hasta: $<span id="maxPriceMobile">2000</span></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="filter-section">
+                                <h3>Buscar</h3>
+                                <input type="text" id="searchInputMobile" placeholder="Buscar productos...">
+                            </div>
+
+                            <button class="btn btn-secondary" id="clearFiltersMobile">Limpiar Filtros</button>
+                        </div>
+
+                        <div class="products-grid" id="productsGrid">
+                            <!-- Los productos se cargarán dinámicamente aquí -->
+                        </div>
+
+                        <div class="no-products" id="noProducts" style="display: none;">
+                            <i class="fas fa-search"></i>
+                            <h3>No se encontraron productos</h3>
+                            <p>Intenta ajustar los filtros de búsqueda</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contacto Section -->
+        <section id="contacto" class="section">
+            <div class="container">
+                <h2>Contacto</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email</h3>
+                        <p>info@techstore.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <h3>Teléfono</h3>
+                        <p>+1 (555) 123-4567</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Dirección</h3>
+                        <p>Av. Tecnología 123, Ciudad Tech</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 TechStore. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Modal de producto -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <i class="fas fa-microchip"></i>
+                </div>
+                <div class="modal-info">
+                    <h2 id="modalTitle"></h2>
+                    <p class="modal-category" id="modalCategory"></p>
+                    <p class="modal-description" id="modalDescription"></p>
+                    <div class="modal-price">
+                        <span class="price" id="modalPrice"></span>
+                    </div>
+                    <button class="btn btn-primary" id="addToCart">Agregar al Carrito</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

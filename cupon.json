@@ -1,0 +1,44 @@
+{
+  "cupones": [
+    {
+      "codigo": "PROMO20",
+      "descuento": 20,
+      "tipo": "porcentaje",
+      "activo": true,
+      "descripcion": "Descuento del 20% en tu compra",
+      "fechaExpiracion": "2025-12-31",
+      "usoMaximo": 100,
+      "usoActual": 0
+    },
+    {
+      "codigo": "BIENVENIDO",
+      "descuento": 15,
+      "tipo": "porcentaje",
+      "activo": true,
+      "descripcion": "Descuento del 15% para nuevos usuarios",
+      "fechaExpiracion": "2025-12-31",
+      "usoMaximo": 50,
+      "usoActual": 0
+    },
+    {
+      "codigo": "TECH10",
+      "descuento": 10,
+      "tipo": "porcentaje",
+      "activo": true,
+      "descripcion": "Descuento del 10% en productos tech",
+      "fechaExpiracion": "2025-12-31",
+      "usoMaximo": 200,
+      "usoActual": 0
+    },
+    {
+      "codigo": "PROMO90",
+      "descuento": 90,
+      "tipo": "porcentaje",
+      "activo": true,
+      "descripcion": "",
+      "fechaExpiracion": "2026-09-30",
+      "usoMaximo": 200,
+      "usoActual": 0
+    }
+  ]
+}

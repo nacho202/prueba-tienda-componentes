@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - TechStore</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin-styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="admin-body">
+    <!-- Pantalla de Login -->
+    <div class="admin-login" id="adminLogin">
+        <div class="login-container">
+            <div class="login-header">
+                <i class="fas fa-shield-alt"></i>
+                <h1>Panel de Administración</h1>
+                <p>TechStore</p>
+            </div>
+            
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="username">
+                        <i class="fas fa-user"></i> Usuario
+                    </label>
+                    <input type="text" id="username" name="username" required autocomplete="username">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">
+                        <i class="fas fa-lock"></i> Contraseña
+                    </label>
+                    <input type="password" id="password" name="password" required autocomplete="current-password">
+                </div>
+                
+                <!-- Captcha Simple -->
+                <div class="form-group captcha-group">
+                    <label for="captcha">
+                        <i class="fas fa-robot"></i> ¿Cuánto es <span id="captchaQuestion"></span>?
+                    </label>
+                    <input type="number" id="captcha" name="captcha" required placeholder="Escribe el resultado">
+                </div>
+                
+                <div class="login-error" id="loginError" style="display: none;"></div>
+                
+                <button type="submit" class="btn btn-primary btn-large">
+                    <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Panel de Administración -->
+    <div class="admin-panel" id="adminPanel" style="display: none;">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="admin-logo">
+                <i class="fas fa-microchip"></i>
+                <h2>TechStore Admin</h2>
+            </div>
+            
+            <nav class="admin-nav">
+                <a href="#" class="admin-nav-item active" data-section="dashboard">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="admin-nav-item" data-section="products">
+                    <i class="fas fa-box"></i>
+                    <span>Productos</span>
+                </a>
+                <a href="#" class="admin-nav-item" data-section="sales">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Ventas</span>
+                </a>
+                <a href="#" class="admin-nav-item" data-section="categories">
+                    <i class="fas fa-tags"></i>
+                    <span>Categorías</span>
+                </a>
+                <a href="#" class="admin-nav-item" data-section="coupons">
+                    <i class="fas fa-ticket-alt"></i>
+                    <span>Cupones</span>
+                </a>
+                <a href="#" class="admin-nav-item" data-section="settings">
+                    <i class="fas fa-cog"></i>
+                    <span>Configuración</span>
+                </a>
+            </nav>
+            
+            <div class="admin-user">
+                <div class="user-info">
+                    <i class="fas fa-user-circle"></i>
+                    <span id="adminUsername">Admin</span>
+                </div>
+                <button class="btn btn-outline btn-sm" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <!-- Header -->
+            <header class="admin-header">
+                <h1 id="sectionTitle">Dashboard</h1>
+                <div class="header-actions">
+                    <button class="btn btn-outline" onclick="window.open('index.html', '_blank')">
+                        <i class="fas fa-external-link-alt"></i> Ver Tienda
+                    </button>
+                </div>
+            </header>
+
+            <!-- Dashboard Section -->
+            <section id="dashboardSection" class="admin-section active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #6fe6b0;">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Ventas Totales</h3>
+                            <p class="stat-value" id="totalSales">$0</p>
+                            <span class="stat-change positive">+12.5% vs mes anterior</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #4ade80;">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Total Pedidos</h3>
+                            <p class="stat-value" id="totalOrders">0</p>
+                            <span class="stat-change positive">+8.2% vs mes anterior</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #22d3ee;">
+                            <i class="fas fa-box"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Total Productos</h3>
+                            <p class="stat-value" id="totalProducts">0</p>
+                            <span class="stat-change">Activos en tienda</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #f59e0b;">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Stock Bajo</h3>
+                            <p class="stat-value" id="lowStock">0</p>
+                            <span class="stat-change negative">Requiere atención</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-content">
+                    <div class="recent-sales">
+                        <h2>Ventas Recientes</h2>
+                        <div class="table-container">
+                            <table class="admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>Pedido</th>
+                                        <th>Cliente</th>
+                                        <th>Fecha</th>
+                                        <th>Total</th>
+                                        <th>Estado</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="recentSalesTable">
+                                    <tr>
+                                        <td colspan="5" class="empty-state">No hay ventas registradas</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Products Section -->
+            <section id="productsSection" class="admin-section">
+                <div class="section-header">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="productSearch" placeholder="Buscar productos...">
+                    </div>
+                    <button class="btn btn-primary" id="addProductBtn">
+                        <i class="fas fa-plus"></i> Agregar Producto
+                    </button>
+                </div>
+
+                <div class="table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Imagen</th>
+                                <th>Nombre</th>
+                                <th>Categoría</th>
+                                <th>Precio</th>
+                                <th>Stock</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productsTable">
+                            <tr>
+                                <td colspan="8" class="empty-state">Cargando productos...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Sales Section -->
+            <section id="salesSection" class="admin-section">
+                <div class="section-header">
+                    <div class="filter-group">
+                        <select id="salesFilter" class="filter-select">
+                            <option value="all">Todas las ventas</option>
+                            <option value="today">Hoy</option>
+                            <option value="week">Esta semana</option>
+                            <option value="month">Este mes</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-outline" id="exportSalesBtn">
+                        <i class="fas fa-download"></i> Exportar
+                    </button>
+                </div>
+
+                <div class="table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Pedido</th>
+                                <th>Cliente</th>
+                                <th>Email</th>
+                                <th>Productos</th>
+                                <th>Total</th>
+                                <th>Método Pago</th>
+                                <th>Fecha</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="salesTable">
+                            <tr>
+                                <td colspan="8" class="empty-state">No hay ventas registradas</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Categories Section -->
+            <section id="categoriesSection" class="admin-section">
+                <div class="section-header">
+                    <h2>Gestión de Categorías</h2>
+                    <button class="btn btn-primary" id="addCategoryBtn">
+                        <i class="fas fa-plus"></i> Nueva Categoría
+                    </button>
+                </div>
+
+                <div class="categories-grid" id="categoriesGrid">
+                    <div class="empty-state">Cargando categorías...</div>
+                </div>
+            </section>
+
+            <!-- Coupons Section -->
+            <section id="couponsSection" class="admin-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-ticket-alt"></i> Gestión de Cupones</h2>
+                    <button class="btn btn-primary" onclick="window.location.href='edit-coupon.html'">
+                        <i class="fas fa-plus"></i> Agregar Cupón
+                    </button>
+                </div>
+
+                <div class="table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Descuento</th>
+                                <th>Descripción</th>
+                                <th>Fecha Expiración</th>
+                                <th>Usos</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="couponsTable">
+                            <tr>
+                                <td colspan="7" class="empty-state">Cargando cupones...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settingsSection" class="admin-section">
+                <div class="settings-container">
+                    <h2>Configuración del Sistema</h2>
+                    
+                    <div class="settings-group">
+                        <h3><i class="fas fa-user-lock"></i> Cambiar Contraseña</h3>
+                        <form id="changePasswordForm">
+                            <div class="form-group">
+                                <label>Contraseña Actual</label>
+                                <input type="password" id="currentPassword" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Nueva Contraseña</label>
+                                <input type="password" id="newPassword" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Confirmar Nueva Contraseña</label>
+                                <input type="password" id="confirmPassword" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Guardar Cambios
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="settings-group">
+                        <h3><i class="fas fa-database"></i> Gestión de Datos</h3>
+                        <div style="display: flex; flex-direction: column; gap: 1rem; max-width: 500px;">
+                            <button class="btn btn-outline" id="backupDataBtn">
+                                <i class="fas fa-download"></i> Descargar Backup Completo
+                            </button>
+                            <button class="btn btn-outline" id="clearSalesBtn">
+                                <i class="fas fa-trash"></i> Limpiar Historial de Ventas
+                            </button>
+                        </div>
+                        <div style="margin-top: 1rem; padding: 1rem; background: #d1fae5; border-left: 4px solid #10b981; border-radius: 8px;">
+                            <p style="margin: 0; font-size: 0.9rem; color: #065f46;">
+                                <strong>✅ Modo Automático:</strong> Todos los cambios se guardan automáticamente en 
+                                products.json y sales.json. No necesitas descargar archivos manualmente.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal para Agregar/Editar Producto -->
+    <div class="modal" id="productModal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h3 id="productModalTitle">Agregar Producto</h3>
+                <button class="close" id="closeProductModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="productForm">
+                    <input type="hidden" id="productId">
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="productName">Nombre del Producto *</label>
+                            <input type="text" id="productName" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="productCategory">Categoría *</label>
+                            <select id="productCategory" required>
+                                <option value="">Seleccionar categoría</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="productPrice">Precio *</label>
+                            <input type="number" id="productPrice" step="0.01" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="productStock">Stock *</label>
+                            <input type="number" id="productStock" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="productShortDesc">Descripción Corta *</label>
+                        <input type="text" id="productShortDesc" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="productDescription">Descripción Completa *</label>
+                        <textarea id="productDescription" rows="4" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="productIcon">Icohttp://localhost:3000/admin.html` (Font Awesome) *</label>
+                        <input type="text" id="productIcon" placeholder="fa-microchip" required>
+                        <small>Ejemplo: fa-microchip, fa-memory, fa-hdd</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="productBrand">Marca</label>
+                        <input type="text" id="productBrand">
+                    </div>
+                    
+                    <div class="form-group checkbox-group">
+                        <label>
+                            <input type="checkbox" id="productFeatured">
+                            Producto Destacado
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="cancelProductBtn">Cancelar</button>
+                <button class="btn btn-primary" id="saveProductBtn">
+                    <i class="fas fa-save"></i> Guardar Producto
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Categoría -->
+    <div class="modal" id="categoryModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="categoryModalTitle">Nueva Categoría</h3>
+                <button class="close" id="closeCategoryModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="categoryForm">
+                    <input type="hidden" id="categoryId">
+                    
+                    <div class="form-group">
+                        <label for="categoryName">Nombre de la Categoría *</label>
+                        <input type="text" id="categoryName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="categorySlug">Slug (URL) *</label>
+                        <input type="text" id="categorySlug" required>
+                        <small>Ejemplo: procesadores, placas-video</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="categoryIcon">Icono (Font Awesome) *</label>
+                        <input type="text" id="categoryIcon" placeholder="fa-microchip" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="categoryDescription">Descripción</label>
+                        <textarea id="categoryDescription" rows="3" placeholder="Descripción de la categoría"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="cancelCategoryBtn">Cancelar</button>
+                <button class="btn btn-primary" id="saveCategoryBtn">
+                    <i class="fas fa-save"></i> Guardar Categoría
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>

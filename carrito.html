@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras - TechStore</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-microchip"></i>
+                <h1><a href="index.html" style="text-decoration: none; color: inherit;">TechStore</a></h1>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html#inicio" class="nav-link">Inicio</a></li>
+                    <li><a href="index.html#productos" class="nav-link">Productos</a></li>
+                    <li><a href="index.html#contacto" class="nav-link">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="header-right">
+                <div class="cart-icon active">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                </div>
+                <button class="hamburger-btn" id="hamburgerBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Menú móvil -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="index.html#inicio" class="nav-link">Inicio</a></li>
+            <li><a href="index.html#productos" class="nav-link">Productos</a></li>
+            <li><a href="index.html#contacto" class="nav-link">Contacto</a></li>
+            <li><a href="carrito.html" class="nav-link active">Carrito</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <div class="container">
+                <a href="index.html">Inicio</a>
+                <span>/</span>
+                <span>Carrito de Compras</span>
+            </div>
+        </div>
+
+        <!-- Carrito Section -->
+        <section class="cart-section">
+            <div class="container">
+                <div class="cart-header">
+                    <h1><i class="fas fa-shopping-cart"></i> Carrito de Compras</h1>
+                    <p>Revisa tus productos antes de proceder al pago</p>
+                </div>
+
+                <!-- Carrito vacío -->
+                <div class="cart-empty" id="cartEmpty" style="display: none;">
+                    <div class="empty-cart-content">
+                        <i class="fas fa-shopping-cart"></i>
+                        <h2>Tu carrito está vacío</h2>
+                        <p>Agrega algunos productos para comenzar tu compra</p>
+                        <a href="index.html#productos" class="btn btn-primary">
+                            <i class="fas fa-shopping-bag"></i> Ver Productos
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Carrito con productos -->
+                <div class="cart-content" id="cartContent">
+                    <div class="cart-items">
+                        <div class="cart-items-header">
+                            <h3>Productos en tu carrito</h3>
+                            <button class="btn btn-outline" id="clearCartBtn">
+                                <i class="fas fa-trash"></i> Vaciar Carrito
+                            </button>
+                        </div>
+                        <div class="cart-items-list" id="cartItemsList">
+                            <!-- Los productos se cargarán dinámicamente -->
+                        </div>
+                    </div>
+
+                    <!-- Resumen del pedido -->
+                    <div class="cart-summary">
+                        <div class="summary-card">
+                            <h3>Resumen del Pedido</h3>
+                            
+                            <div class="summary-row">
+                                <span>Subtotal:</span>
+                                <span id="subtotal">$0</span>
+                            </div>
+                            
+                            <div class="summary-row">
+                                <span>Envío:</span>
+                                <span id="shipping">Gratis</span>
+                            </div>
+                            
+                            <div class="summary-row">
+                                <span>Descuento:</span>
+                                <span id="discount">$0</span>
+                            </div>
+                            
+                            <!-- Campo de código de descuento -->
+                            <div class="coupon-section">
+                                <div class="coupon-input-group">
+                                    <input type="text" id="couponCode" placeholder="Ingresa tu código de descuento" class="coupon-input">
+                                    <button class="btn btn-outline btn-sm" id="applyCouponBtn">
+                                        <i class="fas fa-tag"></i> Aplicar
+                                    </button>
+                                </div>
+                                <div class="coupon-message" id="couponMessage"></div>
+                                <div class="applied-coupon" id="appliedCoupon" style="display: none;">
+                                    <div class="applied-coupon-info">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span id="appliedCouponText"></span>
+                                    </div>
+                                    <button class="btn btn-outline btn-sm" id="removeCouponBtn">
+                                        <i class="fas fa-times"></i> Remover
+                                    </button>
+                                </div>
+                                <div class="coupon-limit-info" id="couponLimitInfo" style="display: none;">
+                                    <i class="fas fa-info-circle"></i>
+                                    <span>Solo se puede usar un cupón a la vez. Remueve el cupón actual para aplicar otro.</span>
+                                </div>
+                            </div>
+                            
+                            <hr>
+                            
+                            <div class="summary-row total">
+                                <span>Total:</span>
+                                <span id="total">$0</span>
+                            </div>
+
+                            <button class="btn btn-primary btn-large" id="checkoutBtn">
+                                <i class="fas fa-credit-card"></i> Proceder al Pago
+                            </button>
+
+                            <div class="payment-methods">
+                                <p>Métodos de pago aceptados:</p>
+                                <div class="payment-icons">
+                                    <i class="fab fa-cc-visa"></i>
+                                    <i class="fab fa-cc-mastercard"></i>
+                                    <i class="fab fa-cc-paypal"></i>
+                                    <i class="fas fa-university"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Productos relacionados -->
+        <section class="related-products">
+            <div class="container">
+                <h2>Productos Destacados</h2>
+                <div class="carousel-container">
+                    <button class="carousel-btn carousel-btn-prev" id="prevBtn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="carousel-wrapper" id="carouselWrapper">
+                        <div class="cart-carousel-grid" id="relatedGrid">
+                            <!-- Los productos relacionados se cargarán dinámicamente -->
+                        </div>
+                    </div>
+                    <button class="carousel-btn carousel-btn-next" id="nextBtn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 TechStore. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Modal de confirmación -->
+    <div class="modal" id="confirmModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Confirmar Acción</h3>
+                <button class="close" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="modalMessage">¿Estás seguro de que quieres realizar esta acción?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="cancelBtn">Cancelar</button>
+                <button class="btn btn-primary" id="confirmBtn">Confirmar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de checkout -->
+    <div class="modal" id="checkoutModal">
+        <div class="modal-content checkout-modal">
+            <div class="modal-header">
+                <h3>Información de Pago</h3>
+                <button class="close" id="closeCheckoutModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="checkoutForm">
+                    <div class="form-group">
+                        <label for="fullName">Nombre Completo</label>
+                        <input type="text" id="fullName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Teléfono</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address">Dirección</label>
+                        <textarea id="address" rows="3" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="paymentMethod">Método de Pago</label>
+                        <select id="paymentMethod" required>
+                            <option value="">Seleccionar método</option>
+                            <option value="credit">Tarjeta de Crédito</option>
+                            <option value="debit">Tarjeta de Débito</option>
+                            <option value="paypal">PayPal</option>
+                            <option value="transfer">Transferencia Bancaria</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group" id="cardDetails" style="display: none;">
+                        <label for="cardNumber">Número de Tarjeta</label>
+                        <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456">
+                        
+                        <div class="card-row">
+                            <div class="form-group">
+                                <label for="expiryDate">Fecha de Vencimiento</label>
+                                <input type="text" id="expiryDate" placeholder="MM/AA">
+                            </div>
+                            <div class="form-group">
+                                <label for="cvv">CVV</label>
+                                <input type="text" id="cvv" placeholder="123">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="cancelCheckoutBtn">Cancelar</button>
+                <button class="btn btn-primary" id="processPaymentBtn">
+                    <i class="fas fa-lock"></i> Procesar Pago
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="carrito.js"></script>
+</body>
+</html>

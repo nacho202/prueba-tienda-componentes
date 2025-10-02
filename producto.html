@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Producto - TechStore</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-microchip"></i>
+                <h1>TechStore</h1>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html#inicio" class="nav-link">Inicio</a></li>
+                    <li><a href="index.html#productos" class="nav-link">Productos</a></li>
+                    <li><a href="index.html#contacto" class="nav-link">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="header-right">
+                <div class="cart-icon" onclick="window.location.href='carrito.html'">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                </div>
+                <button class="hamburger-btn" id="hamburgerBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Menú móvil -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="index.html#inicio" class="nav-link">Inicio</a></li>
+            <li><a href="index.html#productos" class="nav-link">Productos</a></li>
+            <li><a href="index.html#contacto" class="nav-link">Contacto</a></li>
+            <li><a href="carrito.html" class="nav-link">Carrito</a></li>
+        </ul>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="index.html">Inicio</a>
+            <span>/</span>
+            <a href="index.html#productos">Productos</a>
+            <span>/</span>
+            <span id="breadcrumbProduct">Producto</span>
+        </div>
+    </div>
+
+    <!-- Contenido Principal -->
+    <main class="product-detail-main">
+        <div class="container">
+            <!-- Loading -->
+            <div class="loading" id="loading">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>Cargando producto...</p>
+            </div>
+
+            <!-- Error -->
+            <div class="error" id="error" style="display: none;">
+                <i class="fas fa-exclamation-triangle"></i>
+                <h2>Producto no encontrado</h2>
+                <p>El producto que buscas no existe o ha sido eliminado.</p>
+                <a href="index.html#productos" class="btn btn-primary">Volver a Productos</a>
+            </div>
+
+            <!-- Detalles del Producto -->
+            <div class="product-detail" id="productDetail" style="display: none;">
+                <div class="product-detail-layout">
+                    <!-- Imagen del Producto -->
+                    <div class="product-image-section">
+                        <div class="product-image-main">
+                            <div class="product-gallery" id="productGallery">
+                                <i id="productImageIcon" class="fas fa-microchip"></i>
+                            </div>
+                            <button class="gallery-nav prev" id="prevImage" style="display: none;">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="gallery-nav next" id="nextImage" style="display: none;">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            <div class="gallery-counter" id="galleryCounter" style="display: none;">
+                                <span id="currentImage">1</span> / <span id="totalImages">1</span>
+                            </div>
+                        </div>
+                        <div class="product-thumbnails" id="productThumbnails" style="display: none;"></div>
+                        <div class="product-badges">
+                            <span class="badge badge-destacado" id="badgeDestacado" style="display: none;">Destacado</span>
+                            <span class="badge badge-stock" id="badgeStock">En Stock</span>
+                        </div>
+                        
+                        <!-- Descripción debajo de la imagen -->
+                        <div class="product-description">
+                            <h3>Descripción</h3>
+                            <p id="productDescription">Descripción del producto...</p>
+                        </div>
+                    </div>
+
+                    <!-- Información del Producto -->
+                    <div class="product-info-section">
+                        <div class="product-header">
+                            <h1 id="productName">Nombre del Producto</h1>
+                            <div class="product-meta">
+                                <span class="product-category" id="productCategory">Categoría</span>
+                                <span class="product-brand" id="productBrand">Marca</span>
+                            </div>
+                        </div>
+
+                        <div class="product-price-section">
+                            <div class="price-main">
+                                <span class="price" id="productPrice">$0</span>
+                            </div>
+                            <div class="price-info">
+                                <p>Precio final - Sin costos adicionales</p>
+                            </div>
+                        </div>
+
+                        <div class="product-specifications">
+                            <h3>Especificaciones Técnicas</h3>
+                            <div class="specs-grid" id="specsGrid">
+                                <!-- Las especificaciones se cargarán dinámicamente -->
+                            </div>
+                        </div>
+
+                        <div class="product-actions">
+                            <div class="quantity-selector">
+                                <label for="quantity">Cantidad:</label>
+                                <div class="quantity-controls">
+                                    <button class="quantity-btn" id="quantityMinus">-</button>
+                                    <input type="number" id="quantity" value="1" min="1" max="10">
+                                    <button class="quantity-btn" id="quantityPlus">+</button>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn-large" id="addToCartBtn">
+                                <i class="fas fa-cart-plus"></i>
+                                Agregar al Carrito
+                            </button>
+                            <button class="btn btn-secondary btn-large" id="buyNowBtn">
+                                <i class="fas fa-bolt"></i>
+                                Comprar Ahora
+                            </button>
+                        </div>
+
+                        <div class="product-features">
+                            <div class="feature-item">
+                                <i class="fas fa-shipping-fast"></i>
+                                <div>
+                                    <h4>Envío Gratis</h4>
+                                    <p>En compras superiores a $500</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <div>
+                                    <h4>Garantía Oficial</h4>
+                                    <p>2 años de garantía del fabricante</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-headset"></i>
+                                <div>
+                                    <h4>Soporte Técnico</h4>
+                                    <p>Asistencia especializada 24/7</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Productos Relacionados -->
+                <div class="related-products">
+                    <h2>Productos Relacionados</h2>
+                    <div class="related-grid" id="relatedGrid">
+                        <!-- Los productos relacionados se cargarán dinámicamente -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 TechStore. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="config.js"></script>
+    <script src="producto.js"></script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test API - TechStore</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test {
+            background: white;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        .success {
+            color: #10b981;
+            font-weight: bold;
+        }
+        .error {
+            color: #ef4444;
+            font-weight: bold;
+        }
+        .result {
+            background: #f9fafb;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        button {
+            background: #10b981;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background: #059669;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test API - TechStore</h1>
+    <p>Usa esta página para probar que la API está funcionando correctamente.</p>
+
+    <div class="test">
+        <h3>1. Test Health Check</h3>
+        <button onclick="testHealth()">Probar /api/health</button>
+        <div id="health-result"></div>
+    </div>
+
+    <div class="test">
+        <h3>2. Test Productos (GET)</h3>
+        <button onclick="testProducts()">Probar /api/products</button>
+        <div id="products-result"></div>
+    </div>
+
+    <div class="test">
+        <h3>3. Test Credenciales (GET)</h3>
+        <button onclick="testCredentials()">Probar /api/credentials</button>
+        <div id="credentials-result"></div>
+    </div>
+
+    <div class="test">
+        <h3>4. Test Ventas (GET)</h3>
+        <button onclick="testSales()">Probar /api/sales</button>
+        <div id="sales-result"></div>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:3000/api';
+
+        async function testHealth() {
+            const resultDiv = document.getElementById('health-result');
+            resultDiv.innerHTML = '<p>⏳ Probando...</p>';
+            
+            try {
+                const response = await fetch(`${API_URL}/health`);
+                const data = await response.json();
+                
+                resultDiv.innerHTML = `
+                    <p class="success">✅ ÉXITO</p>
+                    <div class="result">${JSON.stringify(data, null, 2)}</div>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <p class="error">❌ ERROR</p>
+                    <div class="result">${error.message}</div>
+                    <p>¿El servidor está corriendo? Ejecuta: <code>npm start</code></p>
+                `;
+            }
+        }
+
+        async function testProducts() {
+            const resultDiv = document.getElementById('products-result');
+            resultDiv.innerHTML = '<p>⏳ Probando...</p>';
+            
+            try {
+                const response = await fetch(`${API_URL}/products`);
+                const data = await response.json();
+                
+                if (Array.isArray(data)) {
+                    resultDiv.innerHTML = `
+                        <p class="success">✅ ÉXITO - Es un array con ${data.length} productos</p>
+                        <div class="result">${JSON.stringify(data.slice(0, 2), null, 2)}
+...más productos</div>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <p class="error">❌ ERROR - No es un array</p>
+                        <div class="result">${JSON.stringify(data, null, 2)}</div>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <p class="error">❌ ERROR</p>
+                    <div class="result">${error.message}</div>
+                `;
+            }
+        }
+
+        async function testCredentials() {
+            const resultDiv = document.getElementById('credentials-result');
+            resultDiv.innerHTML = '<p>⏳ Probando...</p>';
+            
+            try {
+                const response = await fetch(`${API_URL}/credentials`);
+                const data = await response.json();
+                
+                resultDiv.innerHTML = `
+                    <p class="success">✅ ÉXITO</p>
+                    <div class="result">${JSON.stringify(data, null, 2)}</div>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <p class="error">❌ ERROR</p>
+                    <div class="result">${error.message}</div>
+                `;
+            }
+        }
+
+        async function testSales() {
+            const resultDiv = document.getElementById('sales-result');
+            resultDiv.innerHTML = '<p>⏳ Probando...</p>';
+            
+            try {
+                const response = await fetch(`${API_URL}/sales`);
+                const data = await response.json();
+                
+                if (Array.isArray(data)) {
+                    resultDiv.innerHTML = `
+                        <p class="success">✅ ÉXITO - Es un array con ${data.length} ventas</p>
+                        <div class="result">${JSON.stringify(data, null, 2)}</div>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <p class="error">❌ ERROR - No es un array</p>
+                        <div class="result">${JSON.stringify(data, null, 2)}</div>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <p class="error">❌ ERROR</p>
+                    <div class="result">${error.message}</div>
+                `;
+            }
+        }
+
+        // Test automático al cargar
+        window.addEventListener('load', async () => {
+            await testHealth();
+            await new Promise(resolve => setTimeout(resolve, 500));
+            await testProducts();
+        });
+    </script>
+</body>
+</html>
+

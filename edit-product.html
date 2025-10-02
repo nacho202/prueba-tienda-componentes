@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Producto - TechStore Admin</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Cropper.js para recortar imágenes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="admin-header">
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-store"></i>
+                <span>TechStore Admin</span>
+            </div>
+            <nav class="admin-nav">
+                <a href="admin.html" class="nav-link">
+                    <i class="fas fa-arrow-left"></i> Volver al Panel
+                </a>
+                <button onclick="handleLogout()" class="btn btn-outline">
+                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="edit-product-container">
+        <div class="edit-product-header">
+            <h1 id="pageTitle">
+                <i class="fas fa-edit"></i> <span id="titleText">Editar Producto</span>
+            </h1>
+        </div>
+
+        <!-- Formulario de Edición -->
+        <div class="edit-product-form">
+            <form id="editProductForm">
+                <input type="hidden" id="productId">
+
+                <div class="form-grid">
+                    <!-- Columna Izquierda -->
+                    <div class="form-column">
+                        <div class="form-group">
+                            <label for="productName">
+                                <i class="fas fa-tag"></i> Nombre del Producto *
+                            </label>
+                            <input type="text" id="productName" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="productCategory">
+                                <i class="fas fa-folder"></i> Categoría *
+                            </label>
+                            <select id="productCategory" required>
+                                <option value="">Seleccionar categoría</option>
+                                <option value="procesadores">Procesadores</option>
+                                <option value="gabinetes">Gabinetes</option>
+                                <option value="placas-video">Placas de Video</option>
+                                <option value="memorias-ram">Memorias RAM</option>
+                            </select>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="productPrice">
+                                    <i class="fas fa-dollar-sign"></i> Precio *
+                                </label>
+                                <input type="number" id="productPrice" min="0" step="0.01" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="productStock">
+                                    <i class="fas fa-boxes"></i> Stock *
+                                </label>
+                                <input type="number" id="productStock" min="0" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="productBrand">
+                                <i class="fas fa-industry"></i> Marca
+                            </label>
+                            <input type="text" id="productBrand">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="productCoverImage">
+                                <i class="fas fa-image"></i> Imagen de Portada *
+                            </label>
+                            <div class="file-input-wrapper">
+                                <input type="file" id="productCoverImage" accept="image/*,video/*" style="display: none;">
+                                <div id="coverDropZone" class="file-input-label drop-zone">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <span>Arrastra o selecciona imagen/video de portada</span>
+                                    <small style="margin-top: 0.5rem; opacity: 0.8;">O haz click para explorar</small>
+                                </div>
+                                <div class="upload-actions" style="margin-top: 0.5rem;">
+                                    <button type="button" class="btn-url-upload" onclick="openUrlModal('cover')">
+                                        <i class="fas fa-link"></i> Desde URL
+                                    </button>
+                                </div>
+                                <div class="file-preview" id="coverPreview" style="display: none;">
+                                    <img src="" alt="Portada">
+                                    <video src="" controls style="display: none; width: 100%; max-height: 200px;"></video>
+                                    <button type="button" class="remove-image" onclick="removeCoverImage()">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <small>Esta será la imagen/video principal (JPG, PNG, GIF, WEBP, MP4, WEBM - Máx 10MB)</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="productImages">
+                                <i class="fas fa-images"></i> Galería de Imágenes/Videos
+                            </label>
+                            <div class="file-input-wrapper">
+                                <input type="file" id="productImages" accept="image/*,video/*" multiple style="display: none;">
+                                <div id="galleryDropZone" class="file-input-label drop-zone">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <span>Arrastra o selecciona archivos para la galería</span>
+                                    <small style="margin-top: 0.5rem; opacity: 0.8;">O haz click para explorar</small>
+                                </div>
+                                <div class="upload-actions" style="margin-top: 0.5rem;">
+                                    <button type="button" class="btn-url-upload" onclick="openUrlModal('gallery')">
+                                        <i class="fas fa-link"></i> Desde URL
+                                    </button>
+                                </div>
+                                <div class="images-preview-grid" id="imagesPreview"></div>
+                            </div>
+                            <small>Archivos adicionales para la vista detallada (Máx 10 archivos)</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="productFeatured">
+                                <span><i class="fas fa-star"></i> Producto Destacado</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Columna Derecha -->
+                    <div class="form-column">
+                        <div class="form-group">
+                            <label for="productShortDesc">
+                                <i class="fas fa-align-left"></i> Descripción Corta
+                            </label>
+                            <textarea id="productShortDesc" rows="3" placeholder="Descripción breve para las tarjetas de producto"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="productDescription">
+                                <i class="fas fa-file-alt"></i> Descripción Completa
+                            </label>
+                            <textarea id="productDescription" rows="8" placeholder="Descripción detallada del producto"></textarea>
+                        </div>
+
+                        <div class="product-preview">
+                            <h3><i class="fas fa-eye"></i> Vista Previa</h3>
+                            <div class="preview-card">
+                                <div class="preview-image" id="previewImageContainer">
+                                    <i id="previewIcon" class="fas fa-box"></i>
+                                    <img id="previewImage" src="" alt="Preview" style="display: none;">
+                                    <video id="previewVideo" src="" controls style="display: none;"></video>
+                                </div>
+                                <h4 id="previewName">Nombre del Producto</h4>
+                                <p id="previewCategory">Categoría</p>
+                                <p class="preview-price">$<span id="previewPrice">0</span></p>
+                                <p class="preview-stock">Stock: <span id="previewStock">0</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Acciones -->
+                <div class="form-actions">
+                    <button type="button" onclick="window.location.href='admin.html'" class="btn btn-outline">
+                        <i class="fas fa-times"></i> Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Guardar Cambios
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Notificaciones -->
+    <div id="notifications"></div>
+
+    <!-- Modal para recortar imagen -->
+    <div id="cropperModal" class="modal" style="display: none;">
+        <div class="modal-content" style="max-width: 900px;">
+            <div class="modal-header">
+                <h2><i class="fas fa-crop"></i> Recortar Imagen</h2>
+                <button class="close" onclick="closeCropperModal()">&times;</button>
+            </div>
+            <div class="modal-body" style="padding: 0;">
+                <div class="cropper-container-wrapper">
+                    <img id="cropperImage" style="max-width: 100%; display: block;">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline" onclick="closeCropperModal()">
+                    <i class="fas fa-times"></i> Cancelar
+                </button>
+                <button type="button" class="btn btn-primary" onclick="applyCrop()">
+                    <i class="fas fa-check"></i> Aplicar Recorte
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para subir desde URL -->
+    <div id="urlModal" class="modal" style="display: none;">
+        <div class="modal-content" style="max-width: 600px;">
+            <div class="modal-header">
+                <h2><i class="fas fa-link"></i> Subir desde URL</h2>
+                <button class="close" onclick="closeUrlModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="mediaUrl">
+                        <i class="fas fa-globe"></i> URL de la Imagen o Video
+                    </label>
+                    <input type="url" id="mediaUrl" placeholder="https://ejemplo.com/imagen.jpg">
+                    <small>Formatos soportados: JPG, PNG, GIF, WEBP, MP4, WEBM</small>
+                </div>
+                <div id="urlPreview" style="display: none; margin-top: 1rem;">
+                    <p style="color: var(--text-light); margin-bottom: 0.5rem;">Vista previa:</p>
+                    <div id="urlPreviewContent"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline" onclick="closeUrlModal()">
+                    <i class="fas fa-times"></i> Cancelar
+                </button>
+                <button type="button" class="btn btn-primary" onclick="loadFromUrl()">
+                    <i class="fas fa-download"></i> Cargar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cropper.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
+    <script src="config.js"></script>
+    <script src="edit-product.js"></script>
+</body>
+</html>
+

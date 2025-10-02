@@ -1,0 +1,69 @@
+[
+  {
+    "numeroPedido": "TS-2025-66073",
+    "cliente": "nacho campos",
+    "email": "nachoacampos01@gmail.com",
+    "telefono": "3515285112",
+    "direccion": "guandacol 2330, cordoba, AR - CP: 5006",
+    "metodoPago": "Tarjeta de Débito",
+    "productos": [
+      {
+        "id": 1,
+        "nombre": "Intel Core i9-13900K",
+        "cantidad": 1,
+        "precio": 589,
+        "categoria": "procesadores"
+      }
+    ],
+    "subtotal": 589,
+    "descuento": 0,
+    "envio": 0,
+    "total": 589,
+    "cupon": null,
+    "fecha": "2025-06-30T18:42:25.610Z",
+    "timestamp": 1759257745611
+  },
+  {
+    "numeroPedido": "TS-2025-74237",
+    "cliente": "nacho campos",
+    "email": "nachoacampos01@gmail.com",
+    "telefono": "3515285112",
+    "direccion": "guandacol 2330, cordoba, AR - CP: 5006",
+    "metodoPago": "Tarjeta de Débito",
+    "productos": [
+      {
+        "id": 5,
+        "nombre": "NVIDIA GeForce RTX 4090",
+        "cantidad": 1,
+        "precio": 1499,
+        "categoria": "placas-video"
+      }
+    ],
+    "subtotal": 1499,
+    "descuento": 1349.1,
+    "envio": 0,
+    "total": 149.9000000000001,
+    "cupon": {
+      "codigo": "PROMO90",
+      "descuento": 90,
+      "tipo": "porcentaje",
+      "activo": true,
+      "descripcion": "",
+      "fechaExpiracion": "2026-09-30",
+      "usoMaximo": 200,
+      "usoActual": 0
+    },
+    "utm": {
+      "utm_source": "google",
+      "utm_medium": "social",
+      "utm_campaign": "verano",
+      "utm_term": null,
+      "utm_content": "compra-ahora",
+      "referrer": null,
+      "landing_page": "http://localhost:3000/producto.html?id=5&utm_source=google&utm_medium=social&utm_campaign=verano&utm_content=compra-ahora",
+      "timestamp": "2025-10-01T18:24:00.813Z"
+    },
+    "fecha": "2025-10-01T18:25:05.600Z",
+    "timestamp": 1759343105600
+  }
+]

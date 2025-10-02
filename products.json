@@ -1,0 +1,591 @@
+{
+  "productos": [
+    {
+      "id": 1,
+      "nombre": "Intel Core i9-13900K",
+      "categoria": "procesadores",
+      "precio": 589,
+      "descripcion": "El Intel Core i9-13900K es el procesador más potente de la 13ª generación de Intel, diseñado para usuarios exigentes que buscan el máximo rendimiento en gaming, streaming y aplicaciones profesionales. Con su arquitectura híbrida de núcleos Performance y Efficiency, ofrece un equilibrio perfecto entre potencia y eficiencia energética. Perfecto para gaming en 4K, edición de video profesional, renderizado 3D y multitarea intensiva.",
+      "descripcionCorta": "Procesador Intel Core i9 de 13ª generación con 24 núcleos y 32 hilos. Ideal para gaming y trabajo profesional.",
+      "marca": "Intel",
+      "stock": 5,
+      "imagen": "/uploads/products/producto-1-1-1759329292680.webp",
+      "destacado": true,
+      "nucleos": "24 (8P + 16E)",
+      "hilos": "32",
+      "frecuencia": "3.0 GHz base / 5.8 GHz turbo",
+      "socket": "LGA 1700",
+      "especificaciones": {},
+      "coverImage": "/uploads/products/producto-1-1-1759329292680.webp",
+      "galleryImages": [
+        "/uploads/products/producto-1-2-1759329293715.webp",
+        "/uploads/products/producto-1-3-1759329294430.webp"
+      ]
+    },
+    {
+      "id": 2,
+      "nombre": "AMD Ryzen 9 7950X",
+      "categoria": "procesadores",
+      "precio": 699,
+      "descripcion": "El AMD Ryzen 9 7950X representa la cúspide de la tecnología de procesadores AMD con arquitectura Zen 4. Diseñado para profesionales y entusiastas que requieren el máximo rendimiento multinúcleo, este procesador ofrece 16 núcleos y 32 hilos de procesamiento simultáneo. Perfecto para renderizado 3D, compilación de código, streaming en alta calidad y multitarea extrema. Su eficiencia energética mejorada y soporte para DDR5 lo convierten en la elección ideal para workstations de alto rendimiento.",
+      "descripcionCorta": "Procesador AMD Ryzen 9 con arquitectura Zen 4, 16 núcleos y 32 hilos. Excelente rendimiento multinúcleo.",
+      "marca": "AMD",
+      "stock": 12,
+      "imagen": "/uploads/products/producto-2-1-1759329295637.webp",
+      "destacado": false,
+      "coverImage": "/uploads/products/producto-2-1-1759329295637.webp",
+      "galleryImages": [
+        "/uploads/products/producto-2-3-1759329296232.webp"
+      ]
+    },
+    {
+      "id": 3,
+      "nombre": "Intel Core i7-13700K",
+      "categoria": "procesadores",
+      "precio": 419,
+      "descripcion": "El Intel Core i7-13700K ofrece el equilibrio perfecto entre rendimiento y precio en la 13ª generación de Intel. Con 16 núcleos y 24 hilos, este procesador está diseñado para usuarios que buscan alto rendimiento sin comprometer el presupuesto. Ideal para gaming en alta resolución, streaming, edición de video y aplicaciones profesionales. Su arquitectura híbrida permite un excelente rendimiento tanto en tareas intensivas como en uso diario eficiente.",
+      "descripcionCorta": "Procesador Intel Core i7 de 13ª generación con 16 núcleos y 24 hilos. Perfecto balance precio-rendimiento.",
+      "marca": "Intel",
+      "stock": 18,
+      "imagen": "/uploads/products/producto-3-1-1759329296404.webp",
+      "destacado": false,
+      "coverImage": "/uploads/products/producto-3-1-1759329296404.webp",
+      "galleryImages": [
+        "/uploads/products/producto-3-2-1759329296472.webp",
+        "/uploads/products/producto-3-3-1759329296546.webp"
+      ],
+      "especificaciones": {}
+    },
+    {
+      "id": 4,
+      "nombre": "AMD Ryzen 7 7700X",
+      "categoria": "procesadores",
+      "precio": 399,
+      "descripcion": "El AMD Ryzen 7 7700X es la elección perfecta para gamers y creadores de contenido que buscan rendimiento excepcional sin comprometer la eficiencia energética. Con 8 núcleos y 16 hilos basados en la arquitectura Zen 4, ofrece un rendimiento superior en gaming, streaming y aplicaciones creativas. Su soporte nativo para DDR5 y PCIe 5.0 lo convierte en una inversión de futuro, mientras que su eficiencia energética mejorada reduce el consumo de energía y el calor generado.",
+      "descripcionCorta": "Procesador AMD Ryzen 7 con 8 núcleos y 16 hilos. Ideal para gaming y multitarea.",
+      "marca": "AMD",
+      "stock": 18,
+      "imagen": "/uploads/products/producto-4-2-1759329296654.webp",
+      "destacado": false,
+      "coverImage": "/uploads/products/producto-4-2-1759329296654.webp",
+      "galleryImages": [
+        "/uploads/products/producto-4-3-1759329296794.webp"
+      ]
+    },
+    {
+      "id": 5,
+      "nombre": "NVIDIA GeForce RTX 4090",
+      "categoria": "placas-video",
+      "precio": 1499,
+      "descripcion": "La NVIDIA GeForce RTX 4090 es la tarjeta gráfica más potente del mercado, diseñada para los gamers y creadores más exigentes. Con su arquitectura Ada Lovelace y 24GB de memoria GDDR6X, ofrece rendimiento excepcional en gaming 4K, ray tracing avanzado y aplicaciones de IA. Perfecta para gaming en ultra settings, streaming profesional, edición de video 8K y desarrollo de contenido creativo.",
+      "descripcionCorta": "Tarjeta gráfica NVIDIA RTX 4090 con 24GB GDDR6X. La GPU más potente para gaming 4K y ray tracing.",
+      "marca": "NVIDIA",
+      "stock": 17,
+      "imagen": "/uploads/products/producto-5-1-1759329296888.webp",
+      "destacado": true,
+      "vram": "24GB",
+      "tipoMemoria": "GDDR6X",
+      "anchoBanda": "1008 GB/s",
+      "interfaz": "PCIe 4.0 x16",
+      "especificaciones": {},
+      "coverImage": "/uploads/products/producto-5-1-1759329296888.webp",
+      "galleryImages": [
+        "/uploads/products/producto-5-2-1759329297648.webp",
+        "/uploads/products/producto-5-3-1759329297713.webp"
+      ]
+    },
+    {
+      "id": 6,
+      "nombre": "AMD Radeon RX 7900 XTX",
+      "categoria": "placas-video",
+      "precio": 999,
+      "descripcion": "La AMD Radeon RX 7900 XTX es la respuesta de AMD a las tarjetas gráficas de alta gama, ofreciendo un rendimiento excepcional en gaming 4K y aplicaciones creativas. Con 24GB de memoria GDDR6 y arquitectura RDNA 3, proporciona un rendimiento superior en juegos modernos con ray tracing y efectos visuales avanzados. Su diseño eficiente y soporte para tecnologías AMD como FSR 3.0 la convierten en una excelente opción para gamers que buscan la mejor relación precio-rendimiento en el segmento premium.",
+      "descripcionCorta": "Tarjeta gráfica AMD Radeon RX 7900 XTX con 24GB GDDR6. Excelente rendimiento en 4K.",
+      "marca": "AMD",
+      "stock": 10,
+      "imagen": "/uploads/products/producto-6-1-1759329297792.webp",
+      "destacado": false,
+      "coverImage": "/uploads/products/producto-6-1-1759329297792.webp",
+      "galleryImages": [
+        "/uploads/products/producto-6-2-1759329297864.webp",
+        "/uploads/products/producto-6-3-1759329297941.webp"
+      ]
+    },
+    {
+      "id": 7,
+      "nombre": "NVIDIA GeForce RTX 4080",
+      "categoria": "placas-video",
+      "precio": 1199,
+      "descripcion": "La NVIDIA GeForce RTX 4080 ofrece un rendimiento excepcional en gaming de alta resolución y aplicaciones creativas profesionales. Con 16GB de memoria GDDR6X y arquitectura Ada Lovelace, proporciona un rendimiento superior en gaming 1440p y 4K, ray tracing avanzado y aplicaciones de IA. Su eficiencia energética mejorada y soporte para tecnologías como DLSS 3.0 la convierten en la elección ideal para gamers y creadores que buscan el equilibrio perfecto entre rendimiento y precio.",
+      "descripcionCorta": "Tarjeta gráfica NVIDIA RTX 4080 con 16GB GDDR6X. Perfecta para gaming en 1440p y 4K.",
+      "marca": "NVIDIA",
+      "stock": 12,
+      "imagen": "/uploads/products/producto-7-1-1759329298029.webp",
+      "destacado": false,
+      "coverImage": "/uploads/products/producto-7-1-1759329298029.webp",
+      "galleryImages": [
+        "/uploads/products/producto-7-2-1759329298098.webp",
+        "/uploads/products/producto-7-3-1759329298163.webp"
+      ]
+    },
+    {
+      "id": 8,
+      "nombre": "AMD Radeon RX 7800 XT",
+      "categoria": "placas-video",
+      "precio": 499,
+      "descripcion": "La AMD Radeon RX 7800 XT ofrece un rendimiento excepcional en gaming 1440p con un precio competitivo. Con 16GB de memoria GDDR6 y arquitectura RDNA 3, proporciona un rendimiento superior en juegos modernos con efectos visuales avanzados. Su diseño eficiente y soporte para tecnologías AMD como FSR 3.0 la convierten en una excelente opción para gamers que buscan alta calidad visual sin comprometer el presupuesto.",
+      "descripcionCorta": "Tarjeta gráfica AMD Radeon RX 7800 XT con 16GB GDDR6. Ideal para gaming en 1440p.",
+      "marca": "AMD",
+      "stock": 15,
+      "imagen": "/uploads/products/producto-8-1-1759329298240.webp",
+      "destacado": false,
+      "coverImage": "/uploads/products/producto-8-1-1759329298240.webp",
+      "galleryImages": [
+        "/uploads/products/producto-8-3-1759329298333.webp"
+      ]
+    },
+    {
+      "id": 9,
+      "nombre": "Corsair Vengeance RGB Pro 32GB",
+      "categoria": "memorias-ram",
+      "precio": 129,
+      "descripcion": "El kit Corsair Vengeance RGB Pro 32GB representa la combinación perfecta de rendimiento y estética para sistemas gaming y profesionales. Con tecnología DDR4-3200 y configuración dual channel (2x16GB), ofrece un ancho de banda excepcional para aplicaciones exigentes. Su iluminación RGB personalizable permite sincronizar con otros componentes Corsair, mientras que su diseño de perfil bajo garantiza compatibilidad con la mayoría de coolers CPU. Perfecta para gaming en alta resolución, streaming, edición de video y multitarea intensiva.",
+      "descripcionCorta": "Kit de memoria RAM DDR4-3200 de 32GB (2x16GB) con iluminación RGB. Perfecta para gaming y multitarea.",
+      "marca": "Corsair",
+      "stock": 25,
+      "imagen": "/uploads/products/producto-9-1-1759329298488.webp",
+      "destacado": true,
+      "coverImage": "/uploads/products/producto-9-1-1759329298488.webp",
+      "galleryImages": [
+        "/uploads/products/producto-9-2-1759329298568.webp",
+        "/uploads/products/producto-9-3-1759329298636.webp"
+      ]
+    },
+    {
+      "id": 10,
+      "nombre": "G.Skill Trident Z5 RGB 32GB",
+      "categoria": "memorias-ram",
+      "precio": 149,
+      "descripcion": "El kit G.Skill Trident Z5 RGB 32GB representa la vanguardia en tecnología de memoria DDR5, diseñado específicamente para procesadores de última generación. Con velocidad DDR5-6000 y configuración dual channel (2x16GB), ofrece un rendimiento excepcional en aplicaciones exigentes. Su iluminación RGB personalizable y diseño de perfil bajo garantizan compatibilidad con la mayoría de sistemas, mientras que su construcción premium asegura estabilidad y durabilidad a largo plazo.",
+      "descripcionCorta": "Kit de memoria RAM DDR5-6000 de 32GB (2x16GB) con iluminación RGB. Optimizada para procesadores de última generación.",
+      "marca": "G.Skill",
+      "stock": 20,
+      "imagen": "/uploads/products/producto-10-1-1759329298700.webp",
+      "destacado": false,
+      "coverImage": "/uploads/products/producto-10-1-1759329298700.webp",
+      "galleryImages": [
+        "/uploads/products/producto-10-3-1759329298803.webp"
+      ]
+    },
+    {
+      "id": 11,
+      "nombre": "Kingston Fury Beast 16GB",
+      "categoria": "memorias-ram",
+      "precio": 79,
+      "descripcion": "El kit Kingston Fury Beast 16GB ofrece la combinación perfecta de rendimiento y valor para usuarios que buscan una mejora significativa en su sistema sin comprometer el presupuesto. Con tecnología DDR4-3200 y configuración dual channel (2x8GB), proporciona un rendimiento sólido en gaming, multitarea y aplicaciones profesionales. Su diseño sin iluminación RGB reduce costos mientras mantiene la calidad y estabilidad que caracteriza a Kingston.",
+      "descripcionCorta": "Kit de memoria RAM DDR4-3200 de 16GB (2x8GB). Excelente relación calidad-precio.",
+      "marca": "Kingston",
+      "stock": 30,
+      "imagen": "/uploads/products/producto-11-1-1759329298947.webp",
+      "destacado": false,
+      "coverImage": "/uploads/products/producto-11-1-1759329298947.webp",
+      "galleryImages": [
+        "/uploads/products/producto-11-2-1759329299046.webp",
+        "/uploads/products/producto-11-3-1759329299121.webp"
+      ]
+    },
+    {
+      "id": 12,
+      "nombre": "Corsair Dominator Platinum 64GB",
+      "categoria": "memorias-ram",
+      "precio": 299,
+      "descripcion": "El kit Corsair Dominator Platinum 64GB representa la cúspide en tecnología de memoria DDR5, diseñado específicamente para usuarios profesionales y entusiastas que requieren el máximo rendimiento. Con capacidad de 64GB (2x32GB) y velocidad DDR5-5600, ofrece un rendimiento excepcional en aplicaciones de renderizado, edición de video 8K, desarrollo de software y virtualización. Su construcción premium y diseño de perfil bajo garantizan compatibilidad y estabilidad en sistemas de alto rendimiento.",
+      "descripcionCorta": "Kit de memoria RAM DDR5-5600 de 64GB (2x32GB). Para usuarios profesionales y entusiastas.",
+      "marca": "Corsair",
+      "stock": 15,
+      "imagen": "/uploads/products/producto-12-1-1759329299195.webp",
+      "destacado": false,
+      "especificaciones": {},
+      "coverImage": "/uploads/products/producto-12-1-1759329299195.webp",
+      "galleryImages": [
+        "/uploads/products/producto-12-2-1759329299284.webp"
+      ]
+    },
+    {
+      "id": 13,
+      "nombre": "NZXT H7 Elite",
+      "categoria": "gabinetes",
+      "precio": 199,
+      "descripcion": "El NZXT H7 Elite redefine el concepto de gabinete gaming con su diseño elegante y funcionalidad avanzada. Su panel lateral de vidrio templado permite mostrar el interior de tu PC, mientras que los ventiladores RGB incluidos proporcionan iluminación espectacular y refrigeración eficiente. El diseño optimizado del chasis garantiza un excelente flujo de aire y gestión de cables, mientras que su construcción robusta y acabados premium lo convierten en la elección perfecta para sistemas gaming y profesionales de alto rendimiento.",
+      "descripcionCorta": "Gabinete ATX con panel lateral de vidrio templado, ventiladores RGB incluidos y excelente flujo de aire.",
+      "marca": "NZXT",
+      "stock": 12,
+      "imagen": "/uploads/products/producto-13-1-1759329299384.webp",
+      "destacado": true,
+      "coverImage": "/uploads/products/producto-13-1-1759329299384.webp",
+      "galleryImages": [
+        "/uploads/products/producto-13-2-1759329299548.webp",
+        "/uploads/products/producto-13-3-1759329299635.webp"
+      ]
+    },
+    {
+      "id": 14,
+      "nombre": "Fractal Design Define 7",
+      "categoria": "gabinetes",
+      "precio": 179,
+      "descripcion": "El Fractal Design Define 7 Compact combina elegancia minimalista con funcionalidad avanzada en un formato compacto. Su diseño limpio y panel lateral de vidrio templado permite mostrar el interior de tu PC, mientras que su sistema de gestión de cables optimizado mantiene el interior organizado. El diseño acústico avanzado reduce el ruido operativo, mientras que su construcción robusta y acabados premium lo convierten en la elección ideal para usuarios que valoran tanto el rendimiento como la estética.",
+      "descripcionCorta": "Gabinete ATX silencioso con diseño minimalista, excelente gestión de cables y múltiples opciones de ventilación.",
+      "marca": "Fractal Design",
+      "stock": 15,
+      "imagen": "/uploads/products/producto-14-1-1759329299717.webp",
+      "destacado": false,
+      "coverImage": "/uploads/products/producto-14-1-1759329299717.webp",
+      "galleryImages": [
+        "/uploads/products/producto-14-2-1759329299791.webp"
+      ]
+    },
+    {
+      "id": 15,
+      "nombre": "Corsair 4000D Airflow",
+      "categoria": "gabinetes",
+      "precio": 99,
+      "descripcion": "El Corsair 4000D Airflow redefine la refrigeración de gabinetes con su diseño optimizado para máximo flujo de aire. Su panel frontal mesh permite una entrada de aire excepcional, mientras que su diseño interno limpio facilita la instalación de componentes y gestión de cables. La construcción robusta y acabados premium garantizan durabilidad, mientras que su diseño modular permite personalización según las necesidades del usuario.",
+      "descripcionCorta": "Gabinete ATX con excelente flujo de aire, diseño limpio y fácil instalación de componentes.",
+      "marca": "Corsair",
+      "stock": 20,
+      "imagen": "/uploads/products/producto-15-1-1759329299884.webp",
+      "destacado": false,
+      "coverImage": "/uploads/products/producto-15-1-1759329299884.webp",
+      "galleryImages": [
+        "/uploads/products/producto-15-2-1759329300035.webp",
+        "/uploads/products/producto-15-3-1759329300117.webp"
+      ]
+    },
+    {
+      "id": 16,
+      "nombre": "Lian Li O11 Dynamic EVO",
+      "categoria": "gabinetes",
+      "precio": 159,
+      "descripcion": "El Lian Li O11 Dynamic Mini es un gabinete revolucionario que combina diseño único con funcionalidad excepcional. Sus paneles de vidrio templado en ambos lados permiten una vista completa del interior, mientras que su diseño compacto optimiza el espacio sin comprometer la compatibilidad. El sistema de gestión de cables avanzado y múltiples opciones de ventilación lo convierten en la elección perfecta para sistemas gaming y profesionales que buscan tanto rendimiento como estética.",
+      "descripcionCorta": "Gabinete ATX con diseño único, paneles de vidrio en ambos lados y espacio para múltiples ventiladores.",
+      "marca": "Lian Li",
+      "stock": 10,
+      "imagen": "/uploads/products/producto-16-1-1759329300199.webp",
+      "destacado": false,
+      "coverImage": "/uploads/products/producto-16-1-1759329300199.webp",
+      "galleryImages": [
+        "/uploads/products/producto-16-2-1759329300268.webp",
+        "/uploads/products/producto-16-3-1759329300332.webp"
+      ]
+    },
+    {
+      "id": 17,
+      "nombre": "Cooler Master MasterBox TD500",
+      "categoria": "gabinetes",
+      "precio": 89,
+      "descripcion": "El Cooler Master MasterBox TD500 Mesh combina estilo moderno con refrigeración eficiente en un diseño atractivo. Sus ventiladores RGB incluidos proporcionan iluminación espectacular y refrigeración efectiva, mientras que el panel frontal mesh optimiza el flujo de aire. Su diseño modular y gestión de cables mejorada facilitan la instalación de componentes, mientras que su construcción robusta garantiza durabilidad a largo plazo.",
+      "descripcionCorta": "Gabinete ATX con ventiladores RGB incluidos, diseño moderno y buena ventilación.",
+      "marca": "Cooler Master",
+      "stock": 18,
+      "imagen": "/uploads/products/producto-17-1-1759329300412.webp",
+      "destacado": false,
+      "coverImage": "/uploads/products/producto-17-1-1759329300412.webp",
+      "galleryImages": [
+        "/uploads/products/producto-17-3-1759329300505.webp"
+      ]
+    },
+    {
+      "id": 18,
+      "nombre": "Phanteks Eclipse P400A",
+      "categoria": "gabinetes",
+      "precio": 79,
+      "descripcion": "El Phanteks Eclipse P400A Digital combina elegancia con refrigeración excepcional en un diseño moderno y funcional. Su panel frontal mesh permite un flujo de aire óptimo, mientras que los ventiladores RGB incluidos proporcionan iluminación personalizable y refrigeración efectiva. El diseño interno optimizado facilita la instalación de componentes y gestión de cables, mientras que su construcción premium y acabados elegantes lo convierten en la elección ideal para sistemas gaming y profesionales.",
+      "descripcionCorta": "Gabinete ATX con panel frontal mesh, excelente flujo de aire y diseño elegante.",
+      "marca": "Phanteks",
+      "stock": 14,
+      "imagen": "/uploads/products/producto-18-1-1759329300670.webp",
+      "destacado": false,
+      "coverImage": "/uploads/products/producto-18-1-1759329300670.webp",
+      "galleryImages": [
+        "/uploads/products/producto-18-2-1759329300747.webp",
+        "/uploads/products/producto-18-3-1759329300834.webp"
+      ]
+    },
+    {
+      "nombre": "Intel Core i5-13600K",
+      "categoria": "procesadores",
+      "precio": 319,
+      "stock": 18,
+      "marca": "Intel",
+      "imagen": "/uploads/products/producto-19-1-1759329300901.webp",
+      "descripcionCorta": "",
+      "descripcion": "",
+      "destacado": true,
+      "especificaciones": {},
+      "id": 19,
+      "coverImage": "/uploads/products/producto-19-1-1759329300901.webp",
+      "galleryImages": [
+        "/uploads/products/producto-19-2-1759329300968.webp",
+        "/uploads/products/producto-19-3-1759329301046.webp"
+      ]
+    },
+    {
+      "nombre": "Motherboard Asus Rog Crosshair X870E Hero AM5 DDR5",
+      "categoria": "motherboard",
+      "precio": 700,
+      "stock": 5,
+      "marca": "Asus",
+      "imagen": "/uploads/products/producto-20-1-1759329570889.webp",
+      "descripcionCorta": "Motherboard AMD X870E para procesadores AM5, con DDR5, USB4, WiFi 7 y diseño ROG premium.",
+      "descripcion": "La ASUS ROG Crosshair X870E Hero es una placa madre de gama alta diseñada para procesadores AMD Ryzen 7000/8000 series con socket AM5. Representa la cúspide en tecnología para entusiastas del overclock y gaming extremo. Con soporte para memoria DDR5 de hasta 192GB, conectividad USB4 de 40Gbps, WiFi 7 ultrarrápido y un diseño de potencia de 18+2 fases, ofrece estabilidad y rendimiento excepcionales. Perfecta para sistemas gaming de alta gama, workstations profesionales y entusiastas que buscan el máximo rendimiento con refrigeración líquida y overclock extremo. Incluye ROG SupremeFX audio, iluminación Aura Sync RGB y construcción premium.",
+      "destacado": true,
+      "especificaciones": {
+        "socket": "AM5",
+        "chipset": "AMD X870E",
+        "formatoPlaca": "ATX",
+        "memoria": "4 x DIMM, máximo 192GB, DDR5 hasta 8000MHz (OC)",
+        "slots": "2 x PCIe 5.0 x16",
+        "almacenamiento": "5 x M.2 (PCIe 5.0/4.0), 4 x SATA 6Gb/s",
+        "redEthernet": "1 x Intel 2.5Gb Ethernet, 1 x Realtek 5Gb Ethernet",
+        "wifi": "WiFi 7 (802.11be) hasta 6.5Gbps, Bluetooth 5.4",
+        "audio": "ROG SupremeFX ALC4082 7.1 High Definition Audio con puerto óptico S/PDIF",
+        "usbTrasero": "2 x USB4 (40Gbps Type-C), 8 x USB 3.2 Gen2 (10Gbps - 6 Type-A + 2 Type-C)",
+        "usbFrontal": "1 x USB 3.2 Gen2x2 (20Gbps Type-C con 60W PD/QC4+), 1 x USB 3.2 Gen2x2 Type-C, 4 x USB 3.2 Gen1, 4 x USB 2.0",
+        "dimensiones": "30.5 cm x 24.4 cm"
+      },
+      "id": 20,
+      "coverImage": "/uploads/products/producto-20-1-1759329570889.webp",
+      "galleryImages": [
+        "/uploads/products/producto-20-2-1759329571411.webp",
+        "/uploads/products/producto-20-3-1759329571789.webp"
+      ]
+    },
+    {
+      "nombre": "MSI MPG Z790 CARBON WIFI",
+      "categoria": "motherboard",
+      "precio": 450,
+      "stock": 8,
+      "marca": "MSI",
+      "imagen": "/uploads/products/producto-21-1-1759329572175.webp",
+      "descripcionCorta": "Motherboard Intel Z790 ATX con WiFi 6E, DDR5, PCIe 5.0 y diseño premium para gaming.",
+      "descripcion": "La MSI MPG Z790 CARBON WIFI es una placa madre de alto rendimiento diseñada para procesadores Intel de 12ª y 13ª generación. Ofrece soporte para memoria DDR5, conectividad PCIe 5.0, WiFi 6E integrado y un diseño robusto ideal para gaming y overclock. Con iluminación RGB Mystic Light sincronizable, conectores premium y refrigeración mejorada, es la elección perfecta para entusiastas que buscan construir un sistema gaming de alto rendimiento con procesadores Intel Core de última generación.",
+      "destacado": true,
+      "especificaciones": {
+        "socket": "LGA 1700",
+        "chipset": "Intel Z790",
+        "formatoPlaca": "ATX",
+        "memoria": "4 x DIMM, máximo 128GB, DDR5 hasta 7200MHz (OC)",
+        "slots": "3 x PCIe 5.0 x16, 2 x PCIe 3.0 x1",
+        "almacenamiento": "5 x M.2 (PCIe 5.0/4.0), 6 x SATA 6Gb/s",
+        "redEthernet": "1 x 2.5Gb Ethernet (Realtek)",
+        "wifi": "WiFi 6E (Intel AX211), Bluetooth 5.3",
+        "audio": "Realtek ALC4080 7.1 High Definition Audio",
+        "usbTrasero": "1 x USB 3.2 Gen2x2 Type-C (20Gbps), 4 x USB 3.2 Gen2 (10Gbps), 4 x USB 3.2 Gen1 (5Gbps), 2 x USB 2.0",
+        "dimensiones": "30.5 cm x 24.4 cm"
+      },
+      "id": 21,
+      "coverImage": "/uploads/products/producto-21-1-1759329572175.webp",
+      "galleryImages": [
+        "/uploads/products/producto-21-2-1759329572549.webp",
+        "/uploads/products/producto-21-3-1759329572941.webp"
+      ]
+    },
+    {
+      "nombre": "Gigabyte B650 AORUS ELITE AX",
+      "categoria": "motherboard",
+      "precio": 280,
+      "stock": 12,
+      "marca": "Gigabyte",
+      "imagen": "/uploads/products/producto-22-1-1759329573330.webp",
+      "descripcionCorta": "Motherboard AMD B650 con WiFi 6E, DDR5, PCIe 5.0 M.2 y excelente relación calidad-precio.",
+      "descripcion": "La Gigabyte B650 AORUS ELITE AX es una placa madre ATX diseñada para procesadores AMD Ryzen 7000 series con socket AM5. Ofrece un equilibrio perfecto entre características premium y precio accesible, con soporte para memoria DDR5, slot M.2 PCIe 5.0, WiFi 6E integrado y diseño de potencia robusto. Ideal para gamers y creadores de contenido que buscan construir un sistema AMD de alto rendimiento sin comprometer el presupuesto. Incluye iluminación RGB FUSION 2.0, conectores premium y refrigeración mejorada con disipadores térmicos de aluminio.",
+      "destacado": false,
+      "especificaciones": {
+        "socket": "AM5",
+        "chipset": "AMD B650",
+        "formatoPlaca": "ATX",
+        "memoria": "4 x DIMM, máximo 128GB, DDR5 hasta 6600MHz (OC)",
+        "slots": "1 x PCIe 5.0 x16, 1 x PCIe 4.0 x16, 2 x PCIe 4.0 x1",
+        "almacenamiento": "2 x M.2 (1x PCIe 5.0, 1x PCIe 4.0), 4 x SATA 6Gb/s",
+        "redEthernet": "1 x 2.5Gb Ethernet (Realtek RTL8125BG)",
+        "wifi": "WiFi 6E (MediaTek MT7922), Bluetooth 5.3",
+        "audio": "Realtek ALC1220-VB 7.1 High Definition Audio",
+        "usbTrasero": "1 x USB 3.2 Gen2 Type-C (10Gbps), 2 x USB 3.2 Gen2 Type-A (10Gbps), 4 x USB 3.2 Gen1 (5Gbps), 4 x USB 2.0",
+        "dimensiones": "30.5 cm x 24.4 cm"
+      },
+      "id": 22,
+      "coverImage": "/uploads/products/producto-22-1-1759329573330.webp",
+      "galleryImages": [
+        "/uploads/products/producto-22-2-1759329573713.webp",
+        "/uploads/products/producto-22-3-1759329574089.webp"
+      ]
+    },
+    {
+      "nombre": "ASRock B760M Steel Legend WiFi",
+      "categoria": "motherboard",
+      "precio": 199,
+      "stock": 15,
+      "marca": "ASRock",
+      "imagen": "/uploads/products/producto-23-1-1759329774286.webp",
+      "descripcionCorta": "Motherboard Intel B760M micro-ATX con WiFi 6E, DDR5, PCIe 5.0 y RGB policromo.",
+      "descripcion": "La ASRock B760M Steel Legend WiFi es una placa madre micro-ATX diseñada para procesadores Intel de 12ª, 13ª y 14ª generación con socket LGA 1700. Combina un diseño compacto con características premium, incluyendo soporte para memoria DDR5, conectividad WiFi 6E, slot M.2 PCIe 5.0 y un sistema de alimentación de 14+1+1 fases. Su estética Steel Legend con elementos metálicos y RGB policromo la hace perfecta para builds compactas pero potentes. Ideal para usuarios que buscan alto rendimiento en formato reducido, ya sea para gaming, trabajo o estaciones de entretenimiento multimedia. Incluye disipadores M.2, conectores premium y BIOS intuitivo.",
+      "destacado": false,
+      "especificaciones": {
+        "socket": "LGA 1700",
+        "chipset": "Intel B760",
+        "formatoPlaca": "Micro-ATX",
+        "memoria": "4 x DIMM, máximo 128GB, DDR5 hasta 7200MHz (OC)",
+        "slots": "1 x PCIe 5.0 x16, 1 x PCIe 4.0 x16 (x4 mode), 2 x PCIe 3.0 x1",
+        "almacenamiento": "3 x M.2 (1x PCIe 5.0, 2x PCIe 4.0), 4 x SATA 6Gb/s",
+        "redEthernet": "1 x 2.5Gb Ethernet (Dragon RTL8125BG)",
+        "wifi": "WiFi 6E (Intel AX211), Bluetooth 5.3",
+        "audio": "Realtek ALC897 7.1 High Definition Audio con Nahimic Audio",
+        "usbTrasero": "1 x USB 3.2 Gen2x2 Type-C (20Gbps), 1 x USB 3.2 Gen2 Type-A (10Gbps), 4 x USB 3.2 Gen1 (5Gbps), 2 x USB 2.0",
+        "usbFrontal": "1 x USB 3.2 Gen1 Type-C, 2 x USB 3.2 Gen1, 2 x USB 2.0",
+        "dimensiones": "24.4 cm x 24.4 cm"
+      },
+      "id": 23,
+      "coverImage": "/uploads/products/producto-23-1-1759329774286.webp",
+      "galleryImages": [
+        "/uploads/products/producto-23-2-1759329774721.webp",
+        "/uploads/products/producto-23-3-1759329775141.webp"
+      ]
+    },
+    {
+      "nombre": "ASUS TUF Gaming X670E-PLUS WiFi",
+      "categoria": "motherboard",
+      "precio": 389,
+      "stock": 10,
+      "marca": "Asus",
+      "imagen": "/uploads/products/producto-24-1-1759329775456.webp",
+      "descripcionCorta": "Motherboard AMD X670E con diseño militar TUF, DDR5, WiFi 6E y refrigeración mejorada.",
+      "descripcion": "La ASUS TUF Gaming X670E-PLUS WiFi es una placa madre de grado militar diseñada para procesadores AMD Ryzen 7000 series con socket AM5. Construida bajo los estándares TUF Gaming con componentes de calidad militar, certificaciones MIL-STD y refrigeración avanzada con disipadores masivos VRM y chipset. Ofrece soporte para memoria DDR5, conectividad PCIe 5.0 tanto para GPU como M.2, WiFi 6E integrado y un diseño de potencia de 16+2 fases ProCool II. Perfecta para gamers que buscan durabilidad extrema y estabilidad garantizada en sesiones prolongadas. Incluye ASUS SafeSlot reforzado, retroiluminación Aura Sync, conectores premium y AI Suite 3 para overclocking inteligente. Su construcción robusta y características premium la hacen ideal para sistemas gaming de alto rendimiento con excelente relación calidad-precio.",
+      "destacado": true,
+      "especificaciones": {
+        "socket": "AM5",
+        "chipset": "AMD X670E",
+        "formatoPlaca": "ATX",
+        "memoria": "4 x DIMM, máximo 128GB, DDR5 hasta 6400MHz (OC)",
+        "slots": "2 x PCIe 5.0 x16 (x16 o x8/x8), 1 x PCIe 4.0 x16 (x4 mode), 2 x PCIe 4.0 x1",
+        "almacenamiento": "4 x M.2 (2x PCIe 5.0, 2x PCIe 4.0) con disipadores incluidos, 4 x SATA 6Gb/s",
+        "redEthernet": "1 x 2.5Gb Ethernet (Realtek RTL8125BG) con TUF LANGuard",
+        "wifi": "WiFi 6E (MediaTek MT7922), Bluetooth 5.3",
+        "audio": "Realtek S1220A Codec 7.1 High Definition Audio con DTS Custom",
+        "usbTrasero": "1 x USB 3.2 Gen2x2 Type-C (20Gbps), 2 x USB 3.2 Gen2 Type-A (10Gbps), 6 x USB 3.2 Gen1 (5Gbps), 2 x USB 2.0",
+        "usbFrontal": "1 x USB 3.2 Gen2 Type-C, 1 x USB 3.2 Gen2, 2 x USB 3.2 Gen1, 4 x USB 2.0",
+        "iluminacion": "Aura Sync RGB con 3 headers (2x ARGB, 1x RGB)",
+        "dimensiones": "30.5 cm x 24.4 cm"
+      },
+      "id": 24,
+      "coverImage": "/uploads/products/producto-24-1-1759329775456.webp",
+      "galleryImages": [
+        "/uploads/products/producto-24-2-1759329775736.webp",
+        "/uploads/products/producto-24-3-1759329776030.webp"
+      ]
+    },
+    {
+      "nombre": "Seagate BarraCuda 2TB HDD",
+      "categoria": "discos",
+      "precio": 59,
+      "stock": 25,
+      "marca": "Seagate",
+      "imagen": "/uploads/products/producto-25-1-1759330019273.webp",
+      "descripcionCorta": "Disco duro mecánico de 2TB a 7200 RPM con caché de 256MB. Ideal para almacenamiento masivo.",
+      "descripcion": "El Seagate BarraCuda 2TB es un disco duro mecánico (HDD) de 3.5 pulgadas diseñado para ofrecer almacenamiento masivo confiable y económico. Con una velocidad de rotación de 7200 RPM y caché de 256MB, proporciona un equilibrio perfecto entre capacidad, rendimiento y precio. Perfecto para almacenar bibliotecas de juegos, archivos multimedia, backups y datos que no requieren la velocidad extrema de un SSD. Su tecnología Multi-Tier Caching optimiza el rendimiento, mientras que la confiabilidad Seagate garantiza años de operación continua. Ideal como disco secundario en PCs gaming, estaciones de trabajo y servidores domésticos. Incluye garantía de 2 años y soporte técnico Seagate.",
+      "destacado": false,
+      "especificaciones": {
+        "capacidad": "2TB (2000GB)",
+        "factorForma": "3.5 pulgadas",
+        "interfaz": "SATA 6Gb/s",
+        "velocidadRotacion": "7200 RPM",
+        "cache": "256MB",
+        "tasaTransferencia": "Hasta 220 MB/s",
+        "tiempoAcceso": "~8.5ms promedio",
+        "consumoEnergia": "6.8W operación, 0.25W inactivo",
+        "nivelRuido": "28 dBA inactivo, 30 dBA búsqueda",
+        "MTBF": "1,000,000 horas",
+        "garantia": "2 años",
+        "dimensiones": "14.7 x 10.2 x 2.6 cm",
+        "peso": "450g"
+      },
+      "id": 25,
+      "coverImage": "/uploads/products/producto-25-1-1759330019273.webp",
+      "galleryImages": [
+        "/uploads/products/producto-25-2-1759330021212.webp",
+        "/uploads/products/producto-25-3-1759330021502.webp"
+      ]
+    },
+    {
+      "nombre": "Samsung 870 EVO 1TB SSD SATA",
+      "categoria": "discos",
+      "precio": 109,
+      "stock": 20,
+      "marca": "Samsung",
+      "imagen": "/uploads/products/producto-26-1-1759330021797.webp",
+      "descripcionCorta": "SSD SATA de 1TB con velocidades hasta 560 MB/s. Tecnología V-NAND y durabilidad superior.",
+      "descripcion": "El Samsung 870 EVO 1TB representa la evolución de los SSDs SATA, ofreciendo el máximo rendimiento posible en interfaz SATA III. Con velocidades de lectura secuencial de hasta 560 MB/s y escritura de 530 MB/s, proporciona tiempos de carga ultrarrápidos y una experiencia de usuario fluida. Su tecnología V-NAND de Samsung y controlador MJX garantizan rendimiento consistente y durabilidad excepcional con hasta 600 TBW (Terabytes Written). Perfecto para actualizar laptops antiguas, PCs de oficina o como disco principal en sistemas que no tienen slots M.2 disponibles. El software Samsung Magician permite optimización, monitoreo y clonación fácil desde tu disco anterior. Ideal para gaming, edición de fotos, navegación web y aplicaciones profesionales. Incluye garantía de 5 años y cifrado AES de 256 bits para seguridad de datos.",
+      "destacado": true,
+      "especificaciones": {
+        "capacidad": "1TB (1000GB)",
+        "factorForma": "2.5 pulgadas",
+        "interfaz": "SATA III 6Gb/s",
+        "tipoMemoria": "Samsung V-NAND 3-bit MLC",
+        "controlador": "Samsung MJX Controller",
+        "lecturaSecuencial": "Hasta 560 MB/s",
+        "escrituraSecuencial": "Hasta 530 MB/s",
+        "lecturaAleatoria": "Hasta 98,000 IOPS (4KB)",
+        "escrituraAleatoria": "Hasta 88,000 IOPS (4KB)",
+        "TBW": "600 TB (Terabytes Written)",
+        "MTBF": "1,500,000 horas",
+        "consumoEnergia": "3.5W máximo, 0.3W inactivo",
+        "encriptacion": "AES 256-bit, TCG/Opal V2.0, IEEE1667",
+        "garantia": "5 años limitada",
+        "dimensiones": "10 x 7 x 0.68 cm",
+        "peso": "45g"
+      },
+      "id": 26,
+      "coverImage": "/uploads/products/producto-26-1-1759330021797.webp",
+      "galleryImages": [
+        "/uploads/products/producto-26-2-1759330022782.webp",
+        "/uploads/products/producto-26-3-1759330023096.webp"
+      ]
+    },
+    {
+      "nombre": "WD Black SN850X 2TB NVMe M.2 Gen4",
+      "categoria": "discos",
+      "precio": 199,
+      "stock": 15,
+      "marca": "Western Digital",
+      "imagen": "/uploads/products/producto-27-1-1759330023378.webp",
+      "descripcionCorta": "SSD M.2 NVMe Gen4 de 2TB con velocidades hasta 7300 MB/s. Máximo rendimiento para gaming.",
+      "descripcion": "El WD Black SN850X 2TB representa la cúspide del almacenamiento de alto rendimiento para gaming y creación de contenido. Con interfaz PCIe Gen4 x4 NVMe, alcanza velocidades de lectura secuencial de hasta 7,300 MB/s y escritura de 6,600 MB/s, eliminando completamente los tiempos de carga y permitiendo transferencias de archivos masivos en segundos. Su tecnología Game Mode 2.0 optimiza el rendimiento en tiempo real para gaming, mientras que el disipador térmico incluido mantiene temperaturas óptimas durante cargas sostenidas. Perfecto para DirectStorage en Windows 11, carga de texturas en juegos de última generación, edición de video 4K/8K y renderizado 3D profesional. Compatible con PS5 como expansión de almacenamiento interno. El software WD Dashboard permite monitoreo de salud, actualizaciones de firmware y optimización del sistema. Con hasta 1,200 TBW de durabilidad y garantía de 5 años, es la elección definitiva para entusiastas que no aceptan compromisos en rendimiento.",
+      "destacado": true,
+      "especificaciones": {
+        "capacidad": "2TB (2000GB)",
+        "factorForma": "M.2 2280",
+        "interfaz": "PCIe Gen4 x4 NVMe 1.4",
+        "tipoMemoria": "3D TLC NAND",
+        "lecturaSecuencial": "Hasta 7,300 MB/s",
+        "escrituraSecuencial": "Hasta 6,600 MB/s",
+        "lecturaAleatoria": "Hasta 1,200,000 IOPS (4KB)",
+        "escrituraAleatoria": "Hasta 1,100,000 IOPS (4KB)",
+        "TBW": "1,200 TB (Terabytes Written)",
+        "MTBF": "1,750,000 horas",
+        "consumoEnergia": "7W máximo, 30mW inactivo (L1.2)",
+        "disipadorTermico": "Incluido (removible)",
+        "encriptacion": "AES 256-bit",
+        "compatibilidad": "PC (Windows/Linux), PS5 (expansión interna)",
+        "gameModeOptimization": "Game Mode 2.0 incluido",
+        "garantia": "5 años limitada",
+        "dimensiones": "8 x 2.38 x 0.23 cm (con disipador: 8 x 2.4 x 0.88 cm)",
+        "peso": "8g (sin disipador)"
+      },
+      "id": 27,
+      "coverImage": "/uploads/products/producto-27-1-1759330023378.webp",
+      "galleryImages": [
+        "/uploads/products/producto-27-2-1759330023680.webp",
+        "/uploads/products/producto-27-3-1759330023995.webp"
+      ]
+    }
+  ]
+}
