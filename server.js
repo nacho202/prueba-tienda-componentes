@@ -625,6 +625,27 @@ app.delete('/api/coupons/:codigo', async (req, res) => {
     }
 });
 
+// Ruta catch-all para servir archivos HTML (para Vercel)
+app.get('*', (req, res) => {
+    const filePath = path.join(__dirname, req.path);
+    const ext = path.extname(filePath);
+    
+    // Si es un archivo estático (js, css, imágenes, etc.), servirlo
+    if (ext && ext !== '.html') {
+        return res.sendFile(filePath);
+    }
+    
+    // Si no tiene extensión o es HTML, servir index.html por defecto
+    if (!ext || ext === '.html') {
+        const htmlFile = req.path === '/' ? 'index.html' : req.path;
+        const fullPath = path.join(__dirname, htmlFile);
+        return res.sendFile(fullPath);
+    }
+    
+    // Fallback a index.html
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
+
 // Iniciar servidor
 app.listen(PORT, () => {
     console.log('🚀 Servidor TechStore iniciado');
