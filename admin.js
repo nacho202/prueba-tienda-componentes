@@ -299,9 +299,15 @@ function showSection(section) {
         sales: 'Historial de Ventas',
         categories: 'Categorías',
         coupons: 'Gestión de Cupones',
+        statistics: 'Estadísticas Mensuales',
         settings: 'Configuración'
     };
     document.getElementById('sectionTitle').textContent = titles[section];
+    
+    // Cargar datos específicos de la sección
+    if (section === 'statistics') {
+        mostrarEstadisticas();
+    }
 }
 
 // Cargar datos iniciales
@@ -953,11 +959,62 @@ async function eliminarCategoria(id) {
     }
 }
 
+// Calcular estadísticas mensuales
+function calcularEstadisticasMensuales() {
+    const ahora = new Date();
+    const mesActual = ahora.getMonth();
+    const añoActual = ahora.getFullYear();
+    
+    // Filtrar ventas del mes actual
+    const ventasMesActual = ventas.filter(v => {
+        const fechaVenta = new Date(v.fecha);
+        return fechaVenta.getMonth() === mesActual && fechaVenta.getFullYear() === añoActual;
+    });
+    
+    // Filtrar ventas del mes anterior
+    const mesAnterior = mesActual === 0 ? 11 : mesActual - 1;
+    const añoMesAnterior = mesActual === 0 ? añoActual - 1 : añoActual;
+    const ventasMesAnterior = ventas.filter(v => {
+        const fechaVenta = new Date(v.fecha);
+        return fechaVenta.getMonth() === mesAnterior && fechaVenta.getFullYear() === añoMesAnterior;
+    });
+    
+    // Calcular totales del mes actual
+    const totalVentasMesActual = ventasMesActual.reduce((sum, v) => sum + (parseFloat(v.total) || 0), 0);
+    const totalPedidosMesActual = ventasMesActual.length;
+    
+    // Calcular totales del mes anterior
+    const totalVentasMesAnterior = ventasMesAnterior.reduce((sum, v) => sum + (parseFloat(v.total) || 0), 0);
+    const totalPedidosMesAnterior = ventasMesAnterior.length;
+    
+    // Calcular porcentajes de cambio
+    const cambioVentas = totalVentasMesAnterior === 0 ? 100 : 
+        ((totalVentasMesActual - totalVentasMesAnterior) / totalVentasMesAnterior) * 100;
+    
+    const cambioPedidos = totalPedidosMesAnterior === 0 ? 100 : 
+        ((totalPedidosMesActual - totalPedidosMesAnterior) / totalPedidosMesAnterior) * 100;
+    
+    return {
+        mesActual: {
+            ventas: totalVentasMesActual,
+            pedidos: totalPedidosMesActual
+        },
+        mesAnterior: {
+            ventas: totalVentasMesAnterior,
+            pedidos: totalPedidosMesAnterior
+        },
+        cambios: {
+            ventas: cambioVentas,
+            pedidos: cambioPedidos
+        }
+    };
+}
+
 // Actualizar dashboard
 function actualizarDashboard() {
-    // Total de stock (suma de todos los stocks)
-    const totalStock = productos.reduce((sum, p) => sum + (parseInt(p.stock) || 0), 0);
-    document.getElementById('totalProducts').textContent = totalStock;
+    // Total de productos únicos
+    const totalProductos = productos.length;
+    document.getElementById('totalProducts').textContent = totalProductos;
     
     // Stock bajo (cantidad de productos con stock menor a 10)
     const stockBajo = productos.filter(p => parseInt(p.stock) < 10).length;
@@ -970,12 +1027,242 @@ function actualizarDashboard() {
     // Total de pedidos
     document.getElementById('totalOrders').textContent = ventas.length;
     
+    // Calcular y mostrar porcentajes reales
+    const stats = calcularEstadisticasMensuales();
+    
+    // Actualizar porcentaje de ventas
+    const salesChangeEl = document.getElementById('dashboardSalesChange');
+    if (salesChangeEl) {
+        const cambioVentas = stats.cambios.ventas;
+        salesChangeEl.textContent = `${cambioVentas >= 0 ? '+' : ''}${cambioVentas.toFixed(1)}% vs mes anterior`;
+        salesChangeEl.className = `stat-change ${cambioVentas >= 0 ? 'positive' : 'negative'}`;
+    }
+    
+    // Actualizar porcentaje de pedidos
+    const ordersChangeEl = document.getElementById('dashboardOrdersChange');
+    if (ordersChangeEl) {
+        const cambioPedidos = stats.cambios.pedidos;
+        ordersChangeEl.textContent = `${cambioPedidos >= 0 ? '+' : ''}${cambioPedidos.toFixed(1)}% vs mes anterior`;
+        ordersChangeEl.className = `stat-change ${cambioPedidos >= 0 ? 'positive' : 'negative'}`;
+    }
+    
     console.log('📊 Dashboard actualizado:', {
-        totalStock,
+        totalProductos,
         stockBajo,
         totalVentas: totalVentas.toFixed(2),
-        totalPedidos: ventas.length
+        totalPedidos: ventas.length,
+        cambioVentas: stats.cambios.ventas.toFixed(1) + '%',
+        cambioPedidos: stats.cambios.pedidos.toFixed(1) + '%'
     });
+}
+
+// Mostrar estadísticas mensuales
+function mostrarEstadisticas() {
+    const ahora = new Date();
+    const añoActual = ahora.getFullYear();
+    
+    // Llenar selector de años
+    llenarSelectorAños();
+    
+    // Actualizar año mostrado
+    document.getElementById('currentYear').textContent = añoActual;
+    
+    // Generar estadísticas por mes
+    const meses = [
+        'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+        'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+    ];
+    
+    const estadisticasPorMes = meses.map((mes, index) => {
+        const ventasDelMes = ventas.filter(v => {
+            const fechaVenta = new Date(v.fecha);
+            return fechaVenta.getMonth() === index && fechaVenta.getFullYear() === añoActual;
+        });
+        
+        const totalVentas = ventasDelMes.reduce((sum, v) => sum + (parseFloat(v.total) || 0), 0);
+        const totalPedidos = ventasDelMes.length;
+        const ticketPromedio = totalPedidos > 0 ? totalVentas / totalPedidos : 0;
+        const productosVendidos = ventasDelMes.reduce((sum, v) => {
+            return sum + v.productos.reduce((s, p) => s + (parseInt(p.cantidad) || 0), 0);
+        }, 0);
+        
+        return {
+            mes,
+            indice: index,
+            ventas: totalVentas,
+            pedidos: totalPedidos,
+            ticketPromedio,
+            productosVendidos
+        };
+    });
+    
+    // Actualizar resumen del mes actual
+    const mesActual = ahora.getMonth();
+    const statsActual = estadisticasPorMes[mesActual];
+    const statsMesAnterior = mesActual > 0 ? estadisticasPorMes[mesActual - 1] : null;
+    
+    document.getElementById('currentMonthSales').textContent = `$${statsActual.ventas.toFixed(2)}`;
+    document.getElementById('currentMonthOrders').textContent = statsActual.pedidos;
+    document.getElementById('avgTicket').textContent = `$${statsActual.ticketPromedio.toFixed(2)}`;
+    
+    // Calcular cambios vs mes anterior
+    if (statsMesAnterior && statsMesAnterior.ventas > 0) {
+        const cambioVentas = ((statsActual.ventas - statsMesAnterior.ventas) / statsMesAnterior.ventas) * 100;
+        const salesChangeEl = document.getElementById('salesChangePercent');
+        salesChangeEl.textContent = `${cambioVentas >= 0 ? '+' : ''}${cambioVentas.toFixed(1)}% vs mes anterior`;
+        salesChangeEl.className = `stat-change ${cambioVentas >= 0 ? 'positive' : 'negative'}`;
+    } else {
+        document.getElementById('salesChangePercent').textContent = 'Primer mes';
+    }
+    
+    if (statsMesAnterior && statsMesAnterior.pedidos > 0) {
+        const cambioPedidos = ((statsActual.pedidos - statsMesAnterior.pedidos) / statsMesAnterior.pedidos) * 100;
+        const ordersChangeEl = document.getElementById('ordersChangePercent');
+        ordersChangeEl.textContent = `${cambioPedidos >= 0 ? '+' : ''}${cambioPedidos.toFixed(1)}% vs mes anterior`;
+        ordersChangeEl.className = `stat-change ${cambioPedidos >= 0 ? 'positive' : 'negative'}`;
+    } else {
+        document.getElementById('ordersChangePercent').textContent = 'Primer mes';
+    }
+    
+    // Mostrar tabla de estadísticas mensuales
+    const tbody = document.getElementById('monthlyStatsTable');
+    
+    if (ventas.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="6" class="empty-state">No hay ventas registradas</td></tr>';
+        return;
+    }
+    
+    tbody.innerHTML = estadisticasPorMes.map((stat, index) => {
+        const mesAnterior = index > 0 ? estadisticasPorMes[index - 1] : null;
+        let comparacion = '-';
+        
+        if (mesAnterior && mesAnterior.ventas > 0) {
+            const cambio = ((stat.ventas - mesAnterior.ventas) / mesAnterior.ventas) * 100;
+            const clase = cambio >= 0 ? 'positive' : 'negative';
+            const simbolo = cambio >= 0 ? '+' : '';
+            comparacion = `<span class="${clase}">${simbolo}${cambio.toFixed(1)}%</span>`;
+        } else if (index === 0) {
+            comparacion = '<span class="neutral">Primer mes</span>';
+        }
+        
+        // Resaltar el mes actual
+        const esMesActual = index === mesActual;
+        const claseRow = esMesActual ? 'current-month' : '';
+        
+        return `
+            <tr class="${claseRow}">
+                <td><strong>${stat.mes}${esMesActual ? ' (Actual)' : ''}</strong></td>
+                <td><strong>$${stat.ventas.toFixed(2)}</strong></td>
+                <td>${stat.pedidos}</td>
+                <td>$${stat.ticketPromedio.toFixed(2)}</td>
+                <td>${stat.productosVendidos}</td>
+                <td>${comparacion}</td>
+            </tr>
+        `;
+    }).join('');
+}
+
+// Llenar selector de años
+function llenarSelectorAños() {
+    const selector = document.getElementById('yearSelector');
+    if (!selector) return;
+    
+    const añoActual = new Date().getFullYear();
+    const años = [];
+    
+    // Obtener años únicos de las ventas
+    ventas.forEach(v => {
+        const año = new Date(v.fecha).getFullYear();
+        if (!años.includes(año)) {
+            años.push(año);
+        }
+    });
+    
+    // Agregar año actual si no está
+    if (!años.includes(añoActual)) {
+        años.push(añoActual);
+    }
+    
+    // Ordenar descendente
+    años.sort((a, b) => b - a);
+    
+    // Llenar selector
+    selector.innerHTML = años.map(año => 
+        `<option value="${año}" ${año === añoActual ? 'selected' : ''}>${año}</option>`
+    ).join('');
+    
+    // Event listener para cambio de año
+    selector.addEventListener('change', function() {
+        mostrarEstadisticasAño(parseInt(this.value));
+    });
+}
+
+// Mostrar estadísticas de un año específico
+function mostrarEstadisticasAño(año) {
+    document.getElementById('currentYear').textContent = año;
+    
+    const meses = [
+        'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+        'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+    ];
+    
+    const estadisticasPorMes = meses.map((mes, index) => {
+        const ventasDelMes = ventas.filter(v => {
+            const fechaVenta = new Date(v.fecha);
+            return fechaVenta.getMonth() === index && fechaVenta.getFullYear() === año;
+        });
+        
+        const totalVentas = ventasDelMes.reduce((sum, v) => sum + (parseFloat(v.total) || 0), 0);
+        const totalPedidos = ventasDelMes.length;
+        const ticketPromedio = totalPedidos > 0 ? totalVentas / totalPedidos : 0;
+        const productosVendidos = ventasDelMes.reduce((sum, v) => {
+            return sum + v.productos.reduce((s, p) => s + (parseInt(p.cantidad) || 0), 0);
+        }, 0);
+        
+        return {
+            mes,
+            indice: index,
+            ventas: totalVentas,
+            pedidos: totalPedidos,
+            ticketPromedio,
+            productosVendidos
+        };
+    });
+    
+    // Mostrar tabla
+    const tbody = document.getElementById('monthlyStatsTable');
+    const ahora = new Date();
+    const mesActual = ahora.getMonth();
+    const añoActual = ahora.getFullYear();
+    
+    tbody.innerHTML = estadisticasPorMes.map((stat, index) => {
+        const mesAnterior = index > 0 ? estadisticasPorMes[index - 1] : null;
+        let comparacion = '-';
+        
+        if (mesAnterior && mesAnterior.ventas > 0) {
+            const cambio = ((stat.ventas - mesAnterior.ventas) / mesAnterior.ventas) * 100;
+            const clase = cambio >= 0 ? 'positive' : 'negative';
+            const simbolo = cambio >= 0 ? '+' : '';
+            comparacion = `<span class="${clase}">${simbolo}${cambio.toFixed(1)}%</span>`;
+        } else if (index === 0) {
+            comparacion = '<span class="neutral">Primer mes</span>';
+        }
+        
+        // Resaltar el mes actual solo si es el año actual
+        const esMesActual = index === mesActual && año === añoActual;
+        const claseRow = esMesActual ? 'current-month' : '';
+        
+        return `
+            <tr class="${claseRow}">
+                <td><strong>${stat.mes}${esMesActual ? ' (Actual)' : ''}</strong></td>
+                <td><strong>$${stat.ventas.toFixed(2)}</strong></td>
+                <td>${stat.pedidos}</td>
+                <td>$${stat.ticketPromedio.toFixed(2)}</td>
+                <td>${stat.productosVendidos}</td>
+                <td>${comparacion}</td>
+            </tr>
+        `;
+    }).join('');
 }
 
 // Cambiar contraseña

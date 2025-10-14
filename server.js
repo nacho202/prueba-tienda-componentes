@@ -646,6 +646,10 @@ app.get('/checkout', (req, res) => {
     res.sendFile(path.join(__dirname, 'checkout.html'));
 });
 
+app.get('/404', (req, res) => {
+    res.status(404).sendFile(path.join(__dirname, '404.html'));
+});
+
 // Ruta catch-all para servir páginas HTML
 app.get('*', (req, res) => {
     // Si es una ruta HTML específica, servirla
@@ -655,8 +659,8 @@ app.get('*', (req, res) => {
     res.sendFile(fullPath, (err) => {
         if (err) {
             console.log('Error serving HTML:', fullPath);
-            // Fallback a index.html
-            res.sendFile(path.join(__dirname, 'index.html'));
+            // Servir página 404
+            res.status(404).sendFile(path.join(__dirname, '404.html'));
         }
     });
 });

@@ -218,14 +218,20 @@ function inicializarNavegacion() {
 
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
+            const href = this.getAttribute('href');
             
-            // Cambiar la URL sin recargar la página
-            window.history.pushState({}, '', `#${targetId}`);
-            
-            // Mostrar la sección correspondiente
-            mostrarSeccion(targetId);
+            // Solo interceptar enlaces que empiecen con # (navegación interna)
+            if (href && href.startsWith('#')) {
+                e.preventDefault();
+                const targetId = href.substring(1);
+                
+                // Cambiar la URL sin recargar la página
+                window.history.pushState({}, '', `#${targetId}`);
+                
+                // Mostrar la sección correspondiente
+                mostrarSeccion(targetId);
+            }
+            // Los enlaces como /carrito, /producto, etc. se dejan pasar normalmente
         });
     });
 }
@@ -234,6 +240,14 @@ function inicializarNavegacion() {
 function mostrarSeccion(targetId) {
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('.section');
+    
+    // Validar que el targetId sea una sección válida
+    const validSections = ['inicio', 'productos', 'contacto'];
+    if (!validSections.includes(targetId)) {
+        // Redirigir a página 404 si el hash no es válido
+        window.location.href = '/404';
+        return;
+    }
     
     // Actualizar navegación activa (tanto desktop como móvil)
     navLinks.forEach(l => l.classList.remove('active'));

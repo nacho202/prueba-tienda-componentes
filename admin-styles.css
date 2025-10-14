@@ -428,6 +428,22 @@
     background: #f3f4f6;
 }
 
+.btn-icon.btn-primary {
+    color: #3b82f6;
+}
+
+.btn-icon.btn-primary:hover {
+    background: #dbeafe;
+}
+
+.btn-icon.btn-danger {
+    color: #ef4444;
+}
+
+.btn-icon.btn-danger:hover {
+    background: #fee2e2;
+}
+
 /* Section Header */
 .section-header {
     display: flex;
@@ -676,4 +692,52 @@
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+/* ===== ESTADÍSTICAS ===== */
+.year-selector {
+    padding: 0.5rem 1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    background: white;
+    color: #1f2937;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.year-selector:focus {
+    outline: none;
+    border-color: #6fe6b0;
+    box-shadow: 0 0 0 3px rgba(111, 230, 176, 0.1);
+}
+
+.year-selector:hover {
+    border-color: #6fe6b0;
+}
+
+/* Resaltar mes actual en la tabla */
+.current-month {
+    background: rgba(111, 230, 176, 0.1) !important;
+    font-weight: 600;
+}
+
+.current-month td {
+    border-left: 4px solid #6fe6b0;
+}
+
+/* Estilos para comparaciones en tabla */
+.positive {
+    color: #10b981;
+    font-weight: 600;
+}
+
+.negative {
+    color: #ef4444;
+    font-weight: 600;
+}
+
+.neutral {
+    color: #6b7280;
+    font-style: italic;
 }
